@@ -30,7 +30,7 @@ function Login() {
       <div className="relative flex justify-center items-center min-h-screen">
         <div className="absolute inset-0 hidden sm:block">
           <img
-            src="/public/back2.jpg"
+            src="/back2.jpg"
             alt="Background"
             className="w-full h-full object-cover"
           />

@@ -61,7 +61,7 @@ function SimpleVenueCard({ venue, pageType }) {
       {/* Venue Image */}
       <div className="relative">
         <img
-          src={media?.[selectedImageIndex]?.url || '/public/FallbackImg.jpg'}
+          src={media?.[selectedImageIndex]?.url || '/FallbackImg.jpg'}
           alt={media?.[selectedImageIndex]?.alt || 'Venue image'}
           className={`${cardWidth} h-32 object-cover mb-1 cursor-pointer`}
           onClick={() => openImageModal(selectedImageIndex)}

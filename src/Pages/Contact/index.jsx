@@ -30,7 +30,7 @@ const ContactPage = () => {
         {/* Background image */}
         <div className="absolute inset-0">
           <img
-            src="/public/phone.jpg"
+            src="/phone.jpg"
             alt="Phone"
             className="w-full h-full object-cover"
           />

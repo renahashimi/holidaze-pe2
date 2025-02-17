@@ -38,7 +38,7 @@ function Register() {
       <div className="relative w-full flex justify-center items-center min-h-screen sm:mt-[70px] max-w-[1300px] mx-auto sm:mt-[115px]">
         <div className="absolute flex mx-auto justify-center inset-0 hidden sm:block max-w-[1300px]">
           <img
-            src="/public/back3.jpg"
+            src="/back3.jpg"
             alt="Background"
             className="w-full h-full object-cover"
           />

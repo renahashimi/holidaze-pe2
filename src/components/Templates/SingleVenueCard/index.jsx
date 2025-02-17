@@ -90,12 +90,12 @@ function SingleVenuePage() {
         {/* Venue Image */}
         <div className="relative w-full shadow-lg">
           <img
-            src={media?.[currentImageIndex]?.url || '/public/FallbackImg.jpg'}
+            src={media?.[currentImageIndex]?.url || '/FallbackImg.jpg'}
             alt={media?.[currentImageIndex]?.alt || 'Venue image'}
             className="w-full h-[300px] object-cover mb-4"
             onClick={() =>
               openImageModal(
-                media?.[currentImageIndex]?.url || '/public/FallbackImg.jpg',
+                media?.[currentImageIndex]?.url || '/FallbackImg.jpg',
                 currentImageIndex
               )
             }

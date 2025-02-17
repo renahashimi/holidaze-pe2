@@ -87,7 +87,7 @@ function VenueCard({ venue }) {
       {/* Venue Image */}
       <div className="relative">
         <img
-          src={media?.[selectedImageIndex]?.url || '/public/FallbackImg.jpg'}
+          src={media?.[selectedImageIndex]?.url || '/FallbackImg.jpg'}
           alt={media?.[selectedImageIndex]?.alt || 'Venue image'}
           className={`w-[250px] h-48 object-cover mb-1 cursor-pointer transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}
           onClick={() => openImageModal(selectedImageIndex)}

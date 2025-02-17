@@ -30,7 +30,7 @@ function AboutUsContent() {
         </div>
         <div className="flex w-full max-w-[300px] mx-auto justify-center my-5">
           <img
-            src="/public/tourists1.jpg"
+            src="/tourists1.jpg"
             alt="Tourists"
             className="w-64 h-64 rounded-full object-cover"
           />
@@ -48,12 +48,12 @@ function AboutUsContent() {
         </div>
         <div className="flex mx-auto justify-evenly w-full p-3">
           <img
-            src="/public/girljumping.jpg"
+            src="/girljumping.jpg"
             alt="Jumping Girl"
             className="w-32 sm:w-36 rounded-3xl mt-12 object-cover"
           />
           <img
-            src="/public/people2.jpg"
+            src="/people2.jpg"
             alt="Tourists"
             className="w-32 sm:w-36 rounded-3xl mb-12"
           />

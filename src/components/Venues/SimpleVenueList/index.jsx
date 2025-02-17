@@ -35,7 +35,7 @@ function SimpleVenueList({ venues = [] }) {
 
   return (
     <div className="w-full max-w-[1400px] mx-auto mb-5">
-      <img src="/public/back1.jpg" alt="Back img" className='absolute w-full h-full object-cover opacity-75'/>
+      <img src="/back1.jpg" alt="Back img" className='absolute w-full h-full object-cover opacity-75'/>
       <div className="relative pt-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-4 place-items-center mx-auto">
         {visibleVenues.map((venue) => (
           <div key={venue.id} className="w-[140px]">

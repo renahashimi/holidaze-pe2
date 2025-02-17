@@ -148,7 +148,7 @@ const UpdateProfileForm = () => {
     <div className="bg-custom-light p-4">
       <form onSubmit={handleSubmit} className="font-petrona space-y-6 -mt-6">
         <img
-          src={formData.avatarUrl || '/public/FallbackImg2.jpg'}
+          src={formData.avatarUrl || '/FallbackImg2.jpg'}
           alt="Profile Avatar"
           className="w-24 h-24 mt-10 rounded-full object-cover"
         />
@@ -177,7 +177,7 @@ const UpdateProfileForm = () => {
           </div>
         </div>
         <img
-          src={formData.bannerUrl || '/public/FallbackImg2.jpg'}
+          src={formData.bannerUrl || '/FallbackImg2.jpg'}
           alt="Profile Banner"
           className="w-64 h-32 rounded-lg object-cover"
         />
