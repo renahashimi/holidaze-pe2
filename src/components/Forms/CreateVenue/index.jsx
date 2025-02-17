@@ -64,9 +64,9 @@ function CreateVenueForm() {
     setLoading(true);
     setErrorMessage('');
     
-    const { name, description, price, maxGuests } = formData;
-    if (!name || !description || !price || !maxGuests) {
-      setErrorMessage('Please fill in all required fields.');
+    const { name, description, price, maxGuests, rating } = formData;
+    if (!name || !description || !price || !maxGuests || rating < 0 || rating > 5) {
+      setErrorMessage('Please fill in all required fields and ensure rating is between 0 and 5.');
       setLoading(false);
       return;
     }
@@ -119,42 +119,196 @@ function CreateVenueForm() {
   };
   
   return (
-    <form onSubmit={handleFormSubmit} className="font-petrona space-y-5 max-w-lg mx-auto p-4 bg-custom-light rounded-lg shadow-md">
+    <form
+      onSubmit={handleFormSubmit}
+      className="font-petrona space-y-5 max-w-lg mx-auto p-4 bg-custom-light rounded-lg shadow-md"
+    >
       <div className="mb-4">
         <label className="flex text-left text-m uppercase">Title</label>
-        <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Add your title (required)" className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none" required />
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Add your title (required)"
+          className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
+          required
+        />
       </div>
       
       <div className="mb-4">
         <label className="flex text-left text-m uppercase">City</label>
-        <input type="text" name="city" value={formData.city} onChange={handleChange} placeholder="Add your city (Optional)" className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none" />
+        <input
+          type="text"
+          name="city"
+          value={formData.city}
+          onChange={handleChange}
+          placeholder="Add your city (Optional)"
+          className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
+        />
       </div>
-      
+
+      <div className="mb-4">
+        <label className="flex text-left text-m uppercase">Country</label>
+        <input
+          type="text"
+          name="country"
+          value={formData.country}
+          onChange={handleChange}
+          placeholder="Add your country (Optional)"
+          className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
+        />
+      </div>
+
+      <div className="mb-4">
+        <label className="flex text-left text-m uppercase">Description</label>
+        <textarea
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+          placeholder="Add your description (required)"
+          className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
+          required
+        ></textarea>
+      </div>
+
+      <div className="mb-4">
+        <label className="flex text-left text-m uppercase">Price</label>
+        <input
+          type="text"
+          name="price"
+          value={formData.price}
+          onChange={handleChange}
+          placeholder="Price per night (required)"
+          className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
+          required
+        />
+      </div>
+
+      <div className="mb-4">
+        <label className="flex text-left text-m uppercase">Max Guests</label>
+        <input
+          type="number"
+          name="maxGuests"
+          value={formData.maxGuests}
+          onChange={handleChange}
+          placeholder="Max guests (required)"
+          className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
+          required
+        />
+      </div>
+
+      <div className="mb-4">
+        <label className="flex text-left text-m uppercase">Rating (0-5)</label>
+        <select
+          name="rating"
+          value={formData.rating}
+          onChange={(e) =>
+            setFormData((prev) => ({ ...prev, rating: parseFloat(e.target.value) }))
+          }
+          className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
+          required
+        >
+          <option value="">Select Rating</option>
+          {[...Array(6).keys()].map((num) => (
+            <option key={num} value={num}>
+              {num}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <fieldset className="mb-4">
         <legend className="flex text-left text-base uppercase mb-3">Amenities</legend>
-        <div className="flex flex-wrap gap-2 mx-2 sm:flex sm:gap-4">
-          {['wifi', 'parking', 'pets', 'breakfast'].map((amenity) => (
-            <label key={amenity} className="flex items-center">
-              <input type="checkbox" name={amenity} className="mr-1" checked={formData[amenity]} onChange={handleChange} />
-              {amenity.charAt(0).toUpperCase() + amenity.slice(1)}
-            </label>
-          ))}
+        <div className="flex flex-wrap capitalize m-3 justify-between">
+          <label className="flex items-center">
+            <input
+              type="checkbox"
+              name="wifi"
+              className="mr-1"
+              checked={formData.wifi}
+              onChange={handleChange}
+            />
+            Wi-Fi
+          </label>
+          <label className="flex items-center">
+            <input
+              type="checkbox"
+              name="parking"
+              className="mr-1"
+              checked={formData.parking}
+              onChange={handleChange}
+            />
+            Parking
+          </label>
+          <label className="flex items-center">
+            <input
+              type="checkbox"
+              name="pets"
+              className="mr-1"
+              checked={formData.pets}
+              onChange={handleChange}
+            />
+            Pets
+          </label>
+          <label className="flex items-center">
+            <input
+              type="checkbox"
+              name="breakfast"
+              className="mr-1"
+              checked={formData.breakfast}
+              onChange={handleChange}
+            />
+            Breakfast
+          </label>
         </div>
       </fieldset>
-      
+
       <div className="mb-4">
         <label className="flex text-left text-m uppercase">Media</label>
         {formData.media.map((media, index) => (
           <div key={index} className="mb-2">
-            <input type="text" placeholder="Image URL" value={media.url} onChange={(e) => handleMediaChange(index, 'url', e.target.value)} className="w-full p-2 border rounded mb-2" />
-            {media.url && <img src={media.url} alt={formData.name || 'Image'} className="w-1/2 max-w-sm h-auto rounded-md" />}
+            <input
+              type="text"
+              placeholder="Image URL"
+              value={media.url}
+              onChange={(e) => {
+                handleMediaChange(index, 'url', e.target.value);
+                handleMediaChange(index, 'alt', formData.name || 'Image');
+              }}
+              className="w-full p-2 border rounded mb-2"
+            />
+            {media.url && (
+              <img
+                src={media.url}
+                alt={formData.name || 'Image'}
+                className="w-1/2 max-w-sm h-auto rounded-md"
+              />
+            )}
           </div>
         ))}
-        <button type="button" onClick={() => setFormData({ ...formData, media: [...formData.media, { url: '', alt: formData.name || 'Image' }] })} className="flex pt-1 text-sm text-black underline">
+        <button
+          type="button"
+          onClick={() =>
+            setFormData({
+              ...formData,
+              media: [
+                ...formData.media,
+                { url: '', alt: formData.name || 'Image' },
+              ],
+            })
+          }
+          className="flex pt-1 text-sm text-black underline"
+        >
           <GoPlus /> <span className="-mt-1">Add Media</span>
         </button>
       </div>
-      <button type="submit" className="bg-custom-deep flex m-auto text-center text-white font-semibold px-4 py-1 uppercase">Create Venue</button>
+      <button
+        type="submit"
+        className="bg-custom-deep flex m-auto text-center text-white font-semibold px-4 py-1 uppercase"
+      >
+        Create Venue
+      </button>
     </form>
   );
 }

@@ -172,7 +172,7 @@ const ProfileDetails = () => {
                 {profile?.bio || '*This user has not provided a bio/quote.*'}
               </p>
 
-              <ImQuotesRight className="md:flex font-petrona text-4xl text-custom-medium self-end -me-12 -mb-10" />
+              <ImQuotesRight className="md:flex font-petrona text-4xl text-custom-medium self-end -me-9 -mb-10" />
             </div>
           </div>
           {/* Tab Navigation */}

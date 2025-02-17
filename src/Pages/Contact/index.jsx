@@ -65,27 +65,27 @@ const ContactPage = () => {
 
             {/* Follow Us Section */}
             <div className="p-4 bg-white bg-opacity-60 my-6">
-              <p className="text-base text-center text-custom-deep font-bold mb-4 font-play">
+              <p className="text-sm sm:text-base text-center text-custom-deep font-bold mb-4 font-play">
                 FOLLOW & STAY CONNECTED WITH US
               </p>
               <div className="flex justify-evenly">
                 <a
                   href="https://www.facebook.com"
-                  className="text-black hover:text-blue-800"
+                  className="text-black hover:text-blue-700"
                 >
                   <FaFacebookSquare size={24} />
-                </a>
-                <a
-                  href="https://www.twitter.com"
-                  className="text-black hover:text-blue-600"
-                >
-                  <FaSquareXTwitter size={24} />
                 </a>
                 <a
                   href="https://www.instagram.com"
                   className="text-black hover:text-pink-700"
                 >
                   <FaInstagramSquare size={24} />
+                </a>
+                <a
+                  href="https://www.twitter.com"
+                  className="text-black hover:text-green-700"
+                >
+                  <FaSquareXTwitter size={24} />
                 </a>
               </div>
             </div>

@@ -22,6 +22,7 @@ function UpdateVenueForm({ venue, onSubmit }) {
     name: venue?.name || '',
     description: venue?.description || '',
     price: venue?.price || '',
+    rating: venue.rating || '',  
     maxGuests: venue?.maxGuests || '',
     city: venue?.location.city || '',
     country: venue?.location.country || '',
@@ -42,6 +43,7 @@ function UpdateVenueForm({ venue, onSubmit }) {
         name: venue.name || '',
         description: venue.description || '',
         price: venue.price || '',
+        rating: venue.rating || '',
         maxGuests: venue.maxGuests || '',
         city: venue.location.city || '',
         country: venue.location.country || '',
@@ -64,6 +66,7 @@ function UpdateVenueForm({ venue, onSubmit }) {
     name: formData.name,
     description: formData.description,
     price: formData.price,
+    rating: formData.rating, 
     maxGuests: formData.maxGuests,
     media: formData.media.map((item) => ({
       url: item.url,
@@ -99,12 +102,21 @@ function UpdateVenueForm({ venue, onSubmit }) {
    */
   const handleChange = (e) => {
     const { name, type, checked, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
+  
+    // For the rating field, ensure the value is a valid number and assign it accordingly
+    if (name === 'rating') {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: parseInt(value, 10),      
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: type === 'checkbox' ? checked : value,
+      }));
+    }
   };
-
+  
   /**
    * Handles form submission and sends the updated venue data to the API.
    * @param {React.FormEvent} e - The form submission event.
@@ -173,7 +185,7 @@ function UpdateVenueForm({ venue, onSubmit }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="font-petrona space-y-5 max-w-lg mx-auto p-4 bg-custom-light rounded-lg shadow-md"
+      className="font-petrona uppercase space-y-5 max-w-lg mx-auto p-4 bg-custom-light rounded-lg shadow-md"
     >
       <div className="mb-4">
         <label className="block font-medium">Name</label>
@@ -182,6 +194,7 @@ function UpdateVenueForm({ venue, onSubmit }) {
           name="name"
           value={formData.name}
           onChange={handleChange}
+          placeholder="Add name of venue"
           className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
           required
         />
@@ -216,6 +229,7 @@ function UpdateVenueForm({ venue, onSubmit }) {
           name="description"
           value={formData.description}
           onChange={handleChange}
+          placeholder="Add venue descriptions"
           className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
           required
         />
@@ -228,6 +242,7 @@ function UpdateVenueForm({ venue, onSubmit }) {
           name="price"
           value={formData.price}
           onChange={handleChange}
+          placeholder="Add price (Day)"
           className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
           required
           min="0"
@@ -241,16 +256,34 @@ function UpdateVenueForm({ venue, onSubmit }) {
           name="maxGuests"
           value={formData.maxGuests}
           onChange={handleChange}
+          placeholder="Add max guests"
           className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
           required
           min="1"
         />
       </div>
 
-      {/* Checkboxes for amenities */}
+      <div className="mb-4">
+  <label className="block font-medium">Rating</label>
+  <select
+    name="rating"
+    value={formData.rating}
+    onChange={handleChange}
+    className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
+    required
+  >
+    <option value="">Select Rating</option>
+    {[...Array(6).keys()].map((num) => (
+      <option key={num} value={num}>
+        {num}
+      </option>
+    ))}
+  </select>
+</div>
+
       <div className="mb-4">
         <label className="block font-medium">Amenities</label>
-        <div className="flex gap-4">
+        <div className="flex flex-wrap capitalize m-3 justify-between">
           <label className="flex items-center">
             <input
               type="checkbox"

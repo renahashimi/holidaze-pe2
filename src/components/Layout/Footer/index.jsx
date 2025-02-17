@@ -27,7 +27,7 @@ function Footer() {
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-3xl hover:text-blue-500"
+              className="text-3xl hover:text-blue-700"
             >
               <FaSquareFacebook />
             </a>
@@ -35,7 +35,7 @@ function Footer() {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-3xl hover:text-pink-500"
+              className="text-3xl hover:text-pink-700"
             >
               <FaSquareInstagram />
             </a>
@@ -43,7 +43,7 @@ function Footer() {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-3xl hover:text-green-400"
+              className="text-3xl hover:text-green-700"
             >
               <FaSquareXTwitter />
             </a>

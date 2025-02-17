@@ -15,7 +15,7 @@ import React from 'react';
 function AboutUsContent() {
   return (
     <div className="bg-custom-deep max-w-[1300px] mx-auto w-full">
-      <div className="block sm:flex mt-[70px] pt-[60px] p-4 md:mx-auto justify-evenly text-center max-w-[950px]">
+      <div className="block sm:flex mt-[60px] pt-[60px] p-4 md:mx-auto justify-evenly text-center max-w-[950px]">
         <div className="block w-full md:mt-[50px] mx-auto text-white max-w-[400px] md:max-w-[450px]">
           <h1 className="font-play text-2xl md:text-3xl sm:mb-7 font-bolder ">
             Welcome to Holidaze!{' '}

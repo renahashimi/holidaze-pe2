@@ -148,14 +148,101 @@ function SingleVenuePage() {
             <p className="mb-2 p-2 text-xl font-petrona font-semibold">
               ${price} <span className="text-sm">/ night</span>
             </p>
+            <p className="flex ms-2 -mt-3 mb-3 font-petrona">
+              {' '}
+              <GoPeople />{' '}
+              <span className="text-sm text-custom-deep px-1">
+                Max <strong>{maxGuests}</strong> guest(s)
+              </span>
+            </p>
+
+            <div className="font-petrona my-4">
+              <h3 className="font-bold uppercase bg-custom-light px-2">
+                Facilities
+              </h3>
+              <p className="my-1 flex items-center p-2 text-lg">
+                {meta.wifi && (
+                  <span className="flex items-center text-custom-deep">
+                    <FaWifi className="mr-3" />
+                  </span>
+                )}
+                {meta.parking && (
+                  <span className="flex items-center text-custom-deep">
+                    <FaParking className="mr-3" />
+                  </span>
+                )}
+                {meta.breakfast && (
+                  <span className="flex items-center text-custom-deep">
+                    <FaCoffee className="mr-3" />
+                  </span>
+                )}
+                {meta.pets && (
+                  <span className="flex items-center text-custom-deep">
+                    <FaPaw className="mr-3" />
+                  </span>
+                )}
+              </p>
+            </div>
+            {/* Description */}
+            <div className="font-petrona my-3">
+              <h3 className="font-semibold uppercase bg-custom-light px-2">
+                Description
+              </h3>
+              <p className="my-1 p-2 text-sm">{description}</p>
+            </div>
+
+            <div className="block text-xs p-2 sm:mt-9 font-petrona mb-3">
+              <p className="my-2 uppercase">
+                <strong>Bookings:</strong> {_count.bookings || 0}
+              </p>
+              <p className="my-2 uppercase -mt-2">
+                <strong>Created:</strong> {formatDate(created)}
+              </p>
+              <p className="my-2 uppercase -mt-2">
+                <strong>Updated:</strong> {formatDate(updated)}
+              </p>
+            </div>
+          </div>
+
+          <div className="sm:bg-custom-light sm:m-4">
+            {/* Owner section */}
+            <div className="block w-full font-petrona border-t border-3 border-custom-light my-3 sm:m-3">
+              <h3 className="uppercase font-bold text-black bg-custom-light sm:me-3 mb-3 px-2">
+                Hosted by
+              </h3>
+              <div className="flex items-center sm:px-2">
+                <div className="-mt-2 p-2">
+                  <img
+                    src={owner.avatar?.url || '/defaultAvatar.jpg'}
+                    alt={owner.avatar?.alt || 'Owner avatar'}
+                    className="w-12 h-12 object-cover rounded-full"
+                  />
+                </div>
+                <div className="text-sm p-2">
+                  <h4 className="uppercase font-semibold text-sm text-custom-deep">
+                    {/* Make the owner's name a clickable link */}
+                    <a
+                      href={`/profiles/${owner.name}`}
+                      className="text-custom-deep hover:underline"
+                    >
+                      {owner.name || 'Unknown Owner'}
+                    </a>
+                  </h4>
+                  <p className="text-custom-dark">
+                    {owner.email || 'No email provided'}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* SECOND SECTION */}
+            <section className="sm:bg-custom-light sm:w-full">
+              <BookingPage />
+            </section>
           </div>
         </div>
-        {/* Booking Section */}
-        <section className="sm:bg-custom-light sm:w-full">
-          <BookingPage />
-        </section>
       </div>
-      {/* Modal for Image Preview */}
+
       <Modal isOpen={isModalOpen} onClose={closeModal} title={name}>
         {selectedImage && (
           <img

@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './Header';
 import { Outlet } from 'react-router-dom';
-import styled from 'styled-components';
 import BackToTop from '../../helpers/BackToTop';
 import Footer from './Footer';
 
@@ -19,9 +18,11 @@ import Footer from './Footer';
  */
 function Layout() {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <Outlet />
+      <main className="flex-grow">
+        <Outlet />
+      </main>
       <Footer />
       <BackToTop />
     </div>
