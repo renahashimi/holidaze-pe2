@@ -167,7 +167,120 @@ const RegistrationForm = () => {
           {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
         </div>
 
-        {/* Submit Button */}
+        <div className="mb-4">
+          <label
+            htmlFor="email"
+            className="block font-petrona uppercase text-custom-dark font-medium mb-1"
+          >
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
+          />
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email}</p>
+          )}
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="password"
+            className="block font-petrona uppercase text-custom-dark font-medium mb-1"
+          >
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
+          />
+          {errors.password && (
+            <p className="text-red-500 text-sm">{errors.password}</p>
+          )}
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="bio"
+            className="block font-petrona uppercase text-custom-dark font-medium mb-1"
+          >
+            Bio
+          </label>
+          <textarea
+            id="bio"
+            name="bio"
+            value={formData.bio}
+            onChange={handleChange}
+            className="w-full bg-custom-light text-black px-3 py-2 border-b-2 border-custom-dark rounded-none"
+            placeholder="Tell us a little about yourself"
+          />
+          {errors.bio && <p className="text-red-500 text-sm">{errors.bio}</p>}
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="avatarUrl"
+            className="block font-petrona uppercase text-custom-dark font-medium mb-1"
+          >
+            Avatar URL (optional)
+          </label>
+          <input
+            type="url"
+            id="avatarUrl"
+            name="avatarUrl"
+            value={formData.avatarUrl}
+            onChange={handleChange}
+            placeholder="Enter avatar URL"
+            className="w-full bg-custom-light mt-2 px-3 py-2 border-b-2 border-custom-dark rounded-none"
+          />
+          {formData.avatarUrl && (
+            <div className="mt-2">
+              <p className="text-sm text-gray-600">Avatar Preview:</p>
+              <img
+                src={formData.avatarUrl}
+                alt="Avatar Preview"
+                className="w-20 h-20 object-cover rounded-full mt-2"
+              />
+            </div>
+          )}
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="bannerUrl"
+            className="block font-petrona uppercase text-custom-dark font-medium mb-1"
+          >
+            Banner URL (optional)
+          </label>
+          <input
+            type="url"
+            id="bannerUrl"
+            name="bannerUrl"
+            value={formData.bannerUrl}
+            onChange={handleChange}
+            placeholder="Enter banner URL"
+            className="w-full bg-custom-light mt-2 px-3 py-2 border-b-2 border-custom-dark rounded-none"
+          />
+          {formData.avatarUrl && (
+            <div className="mt-2">
+              <p className="text-sm text-gray-600">Banner Preview:</p>
+              <img
+                src={formData.bannerUrl}
+                alt="Banner Preview"
+                className="w-50 h-20 object-cover rounded mt-2"
+              />
+            </div>
+          )}
+        </div>
+
         <div className="flex justify-center m-auto">
           <button
             type="submit"
