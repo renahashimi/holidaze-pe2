@@ -42,7 +42,7 @@ const QuoteSection = () => {
 
         <div className="relative text-center font-petrona py-6 -mt-3">
           <img
-            src="/public/back4.jpg"
+            src="/back4.jpg"
             alt="TravelImg"
             className="absolute inset-0 w-full h-full sm:h-[400px] object-cover z-0"
           />

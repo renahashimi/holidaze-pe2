@@ -27,7 +27,7 @@ const ContactSection = () => {
 
       {/* Right Image */}
       <div className="hidden sm:flex md:w-1/2">
-        <img src="/public/back5.jpg" alt="Contact section img" className="w-full h-auto object-cover" />
+        <img src="/back5.jpg" alt="Contact section img" className="w-full h-auto object-cover" />
       </div>
     </div>
   );
