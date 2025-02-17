@@ -7,4 +7,7 @@ export default defineConfig({
   esbuild: {
     loader: 'jsx',  
   },
+  build: {
+    outDir: 'build',  
+  },
 });
