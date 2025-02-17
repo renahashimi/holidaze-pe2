@@ -70,7 +70,7 @@ function VenuesPage() {
         <meta name="keywords" content="Venues, Venue List, Holidaze, Book Venues" />
       </Helmet>
 
-      <div className="row justify-content-between mt-[50px]">
+      <div className="row justify-content-between mt-[80px]">
         <h1 className="flex m-auto justify-center text-2xl font-prata font-semibold my-6 p-3 uppercase bg-custom-light">
           Our Venues
         </h1>
