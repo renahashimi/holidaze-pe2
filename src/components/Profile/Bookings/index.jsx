@@ -224,8 +224,8 @@ function BookingPage() {
               </select>
             </div>
           </div>
-          <div className="flex justify-between w-full font-black my-5 py-2 bg-custom-light border-b-2 border-custom-dark rounded-none">
-            <h3 className="mt-2">Total Price:</h3>
+          <div className="flex justify-between text-lg w-full font-black my-5 py-2 bg-custom-light border-b-2 border-custom-dark rounded-none">
+            <h3 className="mt-2 ">Total Price:</h3>
             {dates[0] && dates[1] && (
               <div className="total-price text-lg">
                 <p>${totalPrice}</p>

@@ -76,10 +76,10 @@ function SingleProfilePage() {
 
           {/* Name & Email */}
           <div className="text-center md:text-left mt-4 md:-mt-10">
-            <h2 className="text-xl font-semibold text-custom-deep uppercase">
+            <h2 className="text-xl font-play font-semibold text-custom-deep uppercase">
               {profile?.name}
             </h2>
-            <p className="text-custom-dark text-base mt-1">{profile?.email}</p>
+            <p className="text-custom-dark font-petrona text-base mt-1">{profile?.email}</p>
           </div>
 
           {/* Bio Section */}

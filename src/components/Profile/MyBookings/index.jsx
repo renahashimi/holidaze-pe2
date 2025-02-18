@@ -98,7 +98,7 @@ function MyBookings() {
   }
 
   return (
-    <div className="row justify-content-between m-4 p-4 h-full">
+    <div className="row justify-content-between m-4 p-4">
       <h2 className="text-2xl text-custom-deep font-bold mb-4 font-prata uppercase">
         My Bookings
       </h2>

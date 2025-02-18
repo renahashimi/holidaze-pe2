@@ -147,7 +147,7 @@ function MyVenues() {
   }
 
   return (
-    <div className="row justify-content-between m-4 p-4 h-full">
+    <div className="row justify-content-between m-4 p-4">
       <div>
         <h2 className="text-2xl text-custom-deep font-bold mb-4 font-prata uppercase">
           My Venues
@@ -231,8 +231,7 @@ function MyVenues() {
                         </ul>
                       ) : (
                         <p className="font-petrona text-custom-dark text-lg text-center">
-                          You have no venues at the moment.
-                        </p>
+                        No bookings at this venue at the moment.                        </p>
                       )}
                     </div>
                   )}

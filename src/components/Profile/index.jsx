@@ -131,14 +131,12 @@ const ProfileDetails = () => {
       </div>
       <div className="block md:inline-flex w-full md:ps-10 bg-white">
         <div className="md:mx-auto md:bg-custom-medium md:min-w-[250px] md:max-w-[300px] md:flex md:flex-col md:items-center md:pb-10">
-          <div
-            onClick={() => openModal('updateavatar')}
-            className="flex ms-6 md:ms-0 md:flex-col sm:items-center md:block max-w-[100%] cursor-pointer relative"
-          >
+          <div className="flex ms-6 md:ms-0 md:flex-col sm:items-center md:block max-w-[100%] cursor-pointer relative">
             <img
               src={profile?.avatar?.url || '/public/FallbackImg.jpg'}
               alt={profile?.avatar?.alt || 'Profile Avatar'}
               className="rounded-3xl shadow-2xl object-cover z-[10] relative w-24 h-24 -mt-8 sm:w-28 sm:h-28 md:w-32 md:h-32 sm:-mt-12 sm:text-center border border-3 border-custom-medium"
+              onClick={() => openModal('updateavatar')}
             />
             <button
               onClick={(e) => {
@@ -172,7 +170,7 @@ const ProfileDetails = () => {
                 {profile?.bio || '*This user has not provided a bio/quote.*'}
               </p>
 
-              <ImQuotesRight className="md:flex font-petrona text-4xl text-custom-medium self-end -me-9 -mb-10" />
+              <ImQuotesRight className="md:flex font-petrona text-4xl text-custom-medium self-end -me-10 -mb-10" />
             </div>
           </div>
           {/* Tab Navigation */}
@@ -231,7 +229,10 @@ const ProfileDetails = () => {
         </div>
       </div>
       {/* Modal for updating profile or avatar */}
-      <Modal title={modalTitle} isOpen={isModalOpen} onClose={closeModal}>
+      <Modal 
+      title={modalTitle} 
+      isOpen={isModalOpen} 
+      onClose={closeModal}>
         {modalContent}
       </Modal>
     </div>
