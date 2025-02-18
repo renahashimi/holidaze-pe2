@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { authFetch } from '../../../api/auth/authFetch';
 import { apiUrl } from '../../../api/constants';
 import { GoPlus } from 'react-icons/go';
+import { MdDeleteForever } from 'react-icons/md';
 
 /**
  * Form component for creating a new venue.
@@ -199,7 +200,7 @@ function CreateVenueForm() {
       </div>
 
       <div className="mb-4">
-        <label className="flex text-left text-m uppercase">Rating (0-5)</label>
+        <label className="flex text-left text-m uppercase">Rating</label>
         <select
           name="rating"
           value={formData.rating}
@@ -221,7 +222,7 @@ function CreateVenueForm() {
       <fieldset className="mb-4">
         <legend className="flex text-left text-base uppercase mb-3">Amenities</legend>
         <div className="flex flex-wrap capitalize m-3 justify-between">
-          <label className="flex items-center">
+          <label className="flex items-left mr-4">
             <input
               type="checkbox"
               name="wifi"
@@ -231,7 +232,7 @@ function CreateVenueForm() {
             />
             Wi-Fi
           </label>
-          <label className="flex items-center">
+          <label className="flex items-center mr-4">
             <input
               type="checkbox"
               name="parking"
@@ -241,7 +242,7 @@ function CreateVenueForm() {
             />
             Parking
           </label>
-          <label className="flex items-center">
+          <label className="flex items-center mr-4">
             <input
               type="checkbox"
               name="pets"
@@ -251,7 +252,7 @@ function CreateVenueForm() {
             />
             Pets
           </label>
-          <label className="flex items-center">
+          <label className="flex items-center mr-4">
             <input
               type="checkbox"
               name="breakfast"
@@ -267,7 +268,7 @@ function CreateVenueForm() {
       <div className="mb-4">
         <label className="flex text-left text-m uppercase">Media</label>
         {formData.media.map((media, index) => (
-          <div key={index} className="mb-2">
+          <div key={index} className="mb-2 relative">
             <input
               type="text"
               placeholder="Image URL"
@@ -279,11 +280,23 @@ function CreateVenueForm() {
               className="w-full p-2 border rounded mb-2"
             />
             {media.url && (
-              <img
-                src={media.url}
-                alt={formData.name || 'Image'}
-                className="w-1/2 max-w-sm h-auto rounded-md"
-              />
+              <div className="relative mb-2">
+                <img
+                  src={media.url}
+                  alt={formData.name || 'Image'}
+                  className="w-3/4 h-28 rounded-md"
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    const updatedMedia = formData.media.filter((_, idx) => idx !== index);
+                    setFormData({ ...formData, media: updatedMedia });
+                  }}
+                  className="absolute text-3xl top-10 right-4 text-black hover:text-custom-dark  px-2 rounded-full"
+                >
+                  <MdDeleteForever />
+                </button>
+              </div>
             )}
           </div>
         ))}
@@ -298,7 +311,7 @@ function CreateVenueForm() {
               ],
             })
           }
-          className="flex pt-1 text-sm text-black underline"
+          className="flex pt-1 text-base text-black underline"
         >
           <GoPlus /> <span className="-mt-1">Add Media</span>
         </button>

@@ -22,20 +22,19 @@ function UpdateVenueForm({ venue, onSubmit }) {
     name: venue?.name || '',
     description: venue?.description || '',
     price: venue?.price || '',
-    rating: venue.rating || '',  
+    rating: venue?.rating || '',  
     maxGuests: venue?.maxGuests || '',
-    city: venue?.location.city || '',
-    country: venue?.location.country || '',
-    wifi: venue?.meta.wifi || false,
-    parking: venue?.meta.parking || false,
-    pets: venue?.meta.pets || false,
-    breakfast: venue?.meta.breakfast || false,
+    city: venue?.location?.city || '',
+    country: venue?.location?.country || '',
+    wifi: venue?.meta?.wifi || false,
+    parking: venue?.meta?.parking || false,
+    pets: venue?.meta?.pets || false,
+    breakfast: venue?.meta?.breakfast || false,
     media: venue?.media || [{ url: '', alt: '' }],
   });
 
   /**
    * Update formData when the venue prop changes.
-   * @param {Object} venue - The updated venue data.
    */
   useEffect(() => {
     if (venue) {
@@ -45,12 +44,12 @@ function UpdateVenueForm({ venue, onSubmit }) {
         price: venue.price || '',
         rating: venue.rating || '',
         maxGuests: venue.maxGuests || '',
-        city: venue.location.city || '',
-        country: venue.location.country || '',
-        wifi: venue.meta.wifi ?? false,
-        parking: venue.meta.parking ?? false,
-        pets: venue.meta.pets ?? false,
-        breakfast: venue.meta.breakfast ?? false,
+        city: venue.location?.city || '',
+        country: venue.location?.country || '',
+        wifi: venue.meta?.wifi ?? false,
+        parking: venue.meta?.parking ?? false,
+        pets: venue.meta?.pets ?? false,
+        breakfast: venue.meta?.breakfast ?? false,
         media: venue.media || [{ url: '', alt: '' }],
       });
     }
@@ -85,52 +84,26 @@ function UpdateVenueForm({ venue, onSubmit }) {
   };
 
   /**
-   * Handles media changes in the form.
-   * @param {number} index - The index of the media item to update.
-   * @param {string} field - The field of the media item to update ('url' or 'alt').
-   * @param {string} value - The new value for the media field.
-   */
-  const handleMediaChange = (index, field, value) => {
-    const updatedMedia = [...formData.media];
-    updatedMedia[index][field] = value;
-    setFormData((prevData) => ({ ...prevData, media: updatedMedia }));
-  };
-
-  /**
    * Handles form field changes.
-   * @param {React.ChangeEvent} e - The event object from the input field.
+   * @param {React.ChangeEvent<HTMLInputElement | HTMLSelectElement>} e - The event object from the input field.
    */
   const handleChange = (e) => {
     const { name, type, checked, value } = e.target;
-  
-    // For the rating field, ensure the value is a valid number and assign it accordingly
-    if (name === 'rating') {
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: parseInt(value, 10),      
-      }));
-    } else {
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: type === 'checkbox' ? checked : value,
-      }));
-    }
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: type === 'checkbox' ? checked : name === 'rating' ? parseInt(value, 10) || '' : value,
+    }));
   };
-  
+
   /**
    * Handles form submission and sends the updated venue data to the API.
-   * @param {React.FormEvent} e - The form submission event.
+   * @param {React.FormEvent<HTMLFormElement>} e - The form submission event.
    */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let price = formData.price;
-    if (typeof price !== 'string') {
-      price = price.toString();
-    }
-
-    price = parseFloat(price.replace(/\s+/g, '').replace(',', '.'));
-
+    let price = formData.price.toString().replace(/\s+/g, '').replace(',', '.');
+    price = parseFloat(price);
     if (isNaN(price) || price <= 0) {
       alert('Please enter a valid price.');
       return;
@@ -142,35 +115,18 @@ function UpdateVenueForm({ venue, onSubmit }) {
       return;
     }
 
-    const updatedRequestData = {
-      ...requestData,
-      price: price,
-      maxGuests: maxGuests,
-      meta: {
-        wifi: formData.wifi,
-        parking: formData.parking,
-        pets: formData.pets,
-        breakfast: formData.breakfast,
-      },
-      location: {
-        city: formData.city || null,
-        country: formData.country || null,
-      },
-    };
+    const updatedRequestData = { ...requestData, price, maxGuests };
 
     try {
-      const response = await authFetch(
-        `${apiUrl}/venues/${venue.id}?_owner=true&_bookings=true`,
-        {
-          method: 'PUT',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(updatedRequestData),
-        }
-      );
+      const response = await authFetch(`${apiUrl}/venues/${venue.id}?_owner=true&_bookings=true`, {
+        method: 'PUT',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(updatedRequestData),
+      });
 
       const result = await response.json();
       console.log(result);
@@ -264,27 +220,27 @@ function UpdateVenueForm({ venue, onSubmit }) {
       </div>
 
       <div className="mb-4">
-  <label className="block font-medium">Rating</label>
-  <select
-    name="rating"
-    value={formData.rating}
-    onChange={handleChange}
-    className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
-    required
-  >
-    <option value="">Select Rating</option>
-    {[...Array(6).keys()].map((num) => (
-      <option key={num} value={num}>
-        {num}
-      </option>
-    ))}
-  </select>
-</div>
+        <label className="block font-medium">Rating</label>
+        <select
+          name="rating"
+          value={formData.rating}
+          onChange={handleChange}
+          className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
+          required
+        >
+          <option value="">Select Rating</option>
+          {[...Array(6).keys()].map((num) => (
+            <option key={num} value={num}>
+              {num}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <div className="mb-4">
         <label className="block font-medium">Amenities</label>
         <div className="flex flex-wrap capitalize m-3 justify-between">
-          <label className="flex items-center">
+          <label className="flex items-center mr-4">
             <input
               type="checkbox"
               name="wifi"
@@ -294,7 +250,7 @@ function UpdateVenueForm({ venue, onSubmit }) {
             />
             Wi-Fi
           </label>
-          <label className="flex items-center">
+          <label className="flex items-center mr-4">
             <input
               type="checkbox"
               name="parking"
@@ -304,7 +260,7 @@ function UpdateVenueForm({ venue, onSubmit }) {
             />
             Parking
           </label>
-          <label className="flex items-center">
+          <label className="flex items-center mr-4">
             <input
               type="checkbox"
               name="pets"
@@ -314,7 +270,7 @@ function UpdateVenueForm({ venue, onSubmit }) {
             />
             Pets
           </label>
-          <label className="flex items-center">
+          <label className="flex items-center mr-4">
             <input
               type="checkbox"
               name="breakfast"
@@ -336,7 +292,7 @@ function UpdateVenueForm({ venue, onSubmit }) {
                 <img
                   src={media.url}
                   alt={media.alt || formData.name + ' image'}
-                  className="w-36 h-16 object-cover mb-2 rounded"
+                  className="w-3/4 h-28 object-cover mb-2 rounded"
                 />
                 <button
                   type="button"
@@ -345,7 +301,7 @@ function UpdateVenueForm({ venue, onSubmit }) {
                     newMedia.splice(index, 1);
                     setFormData({ ...formData, media: newMedia });
                   }}
-                  className="absolute text-2xl top-2 right-2 text-black px-2 rounded-full"
+                  className="absolute text-3xl top-10 right-4 text-black hover:text-custom-dark px-2 rounded-full"
                 >
                   <MdDeleteForever />
                 </button>
