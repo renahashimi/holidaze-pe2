@@ -16,7 +16,7 @@ const ContactSection = () => {
         <h3 className="font-rubik text-3xl lg:text-4xl md:my-3">GET IN TOUCH</h3>
         <h4 className="font-play lg:text-xl">We’d Love to Hear from You!</h4>
         <p className="font-petrona text-sm lg:text-base pt-3">
-          Have a question, suggestion, or just want to say hello? We’re here to help! Whether you need support, have feedback, or want to know more about our products or services, feel free to reach out.
+          Have a question, suggestion, or just want to say hello? We’re here to help! Whether you need support, have feedback, or want to know more about our venues or services, feel free to reach out.
         </p>
         <p className='font-petrona text-sm lg:text-base font-bold pb-3'> Our team is always happy to assist you.</p> 
 
