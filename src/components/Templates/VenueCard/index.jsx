@@ -171,12 +171,12 @@ function VenueCard({ venue }) {
       </div>
 
       {/* Modal to display the selected image */}
-      <Modal isOpen={isModalOpen} onClose={closeModal} title={name}>
+      <Modal isOpen={isModalOpen} onClose={closeModal} title={name} className="max-w-[600px] p-4">
         {media && media[selectedImageIndex] && (
           <img
             src={media[selectedImageIndex]?.url}
             alt="Selected Venue"
-            className="w-full max-h-[75vh] object-contain mx-auto"
+            className="w-full h-auto object-contain mx-auto"
           />
         )}
       </Modal>

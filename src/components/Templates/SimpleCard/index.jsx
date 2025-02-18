@@ -72,13 +72,13 @@ function SimpleVenueCard({ venue, pageType }) {
           <>
             <button
               onClick={handlePrevImage}
-              className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-custom-dark/90 px-2 py-1 rounded-full text-white text-xl"
+              className="absolute top-1/2 left-0 transform -translate-y-1/2 hover:bg-custom-dark/90 px-3 py-1 rounded-full text-white text-3xl"
             >
               ❮
             </button>
             <button
               onClick={handleNextImage}
-              className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-custom-dark/90 px-2 py-1 rounded-full text-white text-xl"
+              className="absolute top-1/2 right-0 transform -translate-y-1/2 hover:bg-custom-dark/90 px-3 py-1 rounded-full text-white text-3xl"
             >
               ❯
             </button>
@@ -120,7 +120,7 @@ function SimpleVenueCard({ venue, pageType }) {
           <img
             src={media[selectedImageIndex]?.url}
             alt="Selected Venue"
-            className="w-full max-h-[75vh] object-contain mx-auto"
+            className="w-full h-auto object-contain mx-auto"
           />
         )}
       </Modal>

@@ -39,8 +39,8 @@ const Modal = ({ isOpen, onClose, children, title }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black bg-opacity-70 modal-overlay">
-      <div className="bg-custom-deep p-2 rounded-lg shadow-lg max-w-lg w-full relative z-[10000]">
+    <div className="fixed inset-0 flex items-center justify-center w-full z-[9999] bg-black bg-opacity-70 modal-overlay">
+      <div className="bg-custom-deep p-2 rounded-lg shadow-lg m-5 max-w-[900px] relative z-[10000]">
         <button
           onClick={handleButtonClick}
           className="absolute top-2 right-2 text-white hover:text-custom-light text-3xl"

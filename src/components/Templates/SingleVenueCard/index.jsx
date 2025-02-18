@@ -140,18 +140,18 @@ function SingleVenuePage() {
         <div className="block md:flex justify-between">
           <div className="md:max-w-[400px] lg:max-w-[450px] w-full sm:ps-3">
             <p className="flex font-petrona text-custom-dark text-lg p-2 -mt-3">
-              <IoLocationSharp className="text-lg mr-1 -ms-1 mt-1" />
+              <IoLocationSharp className="text-lg md:text-xl mr-1 -ms-1 mt-1" />
               {location.city && location.country
                 ? `${location.city}, ${location.country}`
                 : 'Location not available'}
             </p>
-            <p className="mb-2 p-2 text-xl font-petrona font-semibold">
+            <p className="mb-3 p-2 text-xl md:text-2xl font-petrona font-semibold">
               ${price} <span className="text-sm">/ night</span>
             </p>
             <p className="flex ms-2 -mt-3 mb-3 font-petrona">
               {' '}
               <GoPeople />{' '}
-              <span className="text-sm text-custom-deep px-1">
+              <span className="text-sm md:text-base text-custom-deep px-1">
                 Max <strong>{maxGuests}</strong> guest(s)
               </span>
             </p>
@@ -184,14 +184,14 @@ function SingleVenuePage() {
               </p>
             </div>
             {/* Description */}
-            <div className="font-petrona my-3">
+            <div className="font-petrona my-3 md:min-h-[250px]">
               <h3 className="font-semibold uppercase bg-custom-light px-2">
                 Description
               </h3>
-              <p className="my-1 p-2 text-sm">{description}</p>
+              <p className="my-1 p-2 text-base">{description}</p>
             </div>
 
-            <div className="block text-xs p-2 sm:mt-9 font-petrona mb-3">
+            <div className="block text-xs md:text-sm p-2 sm:mt-9 font-petrona mb-3">
               <p className="my-2 uppercase">
                 <strong>Bookings:</strong> {_count.bookings || 0}
               </p>
@@ -206,7 +206,7 @@ function SingleVenuePage() {
 
           <div className="sm:bg-custom-light sm:m-4">
             {/* Owner section */}
-            <div className="block w-full font-petrona border-t border-3 border-custom-light my-3 sm:m-3">
+            <div className="block w-full font-petrona border-t border-3 border-custom-light my-3 sm:m-3 md:min-w-[320px]">
               <h3 className="uppercase font-bold text-black bg-custom-light sm:me-3 mb-3 px-2">
                 Hosted by
               </h3>
