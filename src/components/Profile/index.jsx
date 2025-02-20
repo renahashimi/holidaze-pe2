@@ -60,9 +60,11 @@ const ProfileDetails = () => {
 
         if (response.ok) {
           const data = await response.json();
-          console.log('Fetched profile data:', data.data);
           setProfile(data.data);
           setIsVenueManager(data.data.venueManager || false);
+          if (!data.data.venueManager) {
+            setActiveTab('bookings'); 
+          }
         } else {
           throw new Error('Failed to fetch profile');
         }
@@ -118,7 +120,7 @@ const ProfileDetails = () => {
     <div className="block mx-auto w-full max-w-[1300px] -mt-4 shadow-2xl">
       <div className="relative shadow-xl">
         <img
-          src={profile?.banner?.url || '/public/FallbackImg.jpg'}
+          src={profile?.banner?.url || '/FallbackImg2.jpg'}
           alt={profile?.banner?.alt || 'Profile banner'}
           className="flex w-full max-h-[150px] md:max-h-[200px] object-cover"
         />
@@ -133,7 +135,7 @@ const ProfileDetails = () => {
         <div className="md:mx-auto md:bg-custom-medium md:min-w-[250px] md:max-w-[300px] md:flex md:flex-col md:items-center md:pb-10">
           <div className="flex ms-6 md:ms-0 md:flex-col sm:items-center md:block max-w-[100%] cursor-pointer relative">
             <img
-              src={profile?.avatar?.url || '/public/FallbackImg.jpg'}
+              src={profile?.avatar?.url || '/FallbackImg2.jpg'}
               alt={profile?.avatar?.alt || 'Profile Avatar'}
               className="rounded-3xl shadow-2xl object-cover z-[10] relative w-24 h-24 -mt-8 sm:w-28 sm:h-28 md:w-32 md:h-32 sm:-mt-12 sm:text-center border border-3 border-custom-medium"
               onClick={() => openModal('updateavatar')}
@@ -162,15 +164,15 @@ const ProfileDetails = () => {
             <h3 className="uppercase bg-custom-light text-lg font-semibold">
               Contact & Bio
             </h3>
-            <p className="text-base py-2">{profile?.email}</p>
+            <p className="text-base py-2 md:py-5">{profile?.email}</p>
             <div className="flex justify-between mx-auto mt-4 md:mt-0 md:ml-auto bg-custom-light p-8 rounded-lg max-w-[500px] ">
-              <ImQuotesLeft className="md:flex font-petrona text-4xl text-custom-medium mr-3 -mt-12 -ms-10" />
+              <ImQuotesLeft className="md:flex font-petrona text-2xl md:text-3xl text-custom-medium mr-3 -mt-12 -ms-10" />
 
-              <p className="text-custom-deep font-bold italic text-sm text-center md:text-left ">
+              <p className="text-custom-deep font-petrona font-bold italic text-sm md:text-base text-center">
                 {profile?.bio || '*This user has not provided a bio/quote.*'}
               </p>
 
-              <ImQuotesRight className="md:flex font-petrona text-4xl text-custom-medium self-end -me-10 -mb-10" />
+              <ImQuotesRight className="md:flex font-petrona text-2xl md:text-3xl text-custom-medium self-end -me-10 -mb-10" />
             </div>
           </div>
           {/* Tab Navigation */}
@@ -215,7 +217,7 @@ const ProfileDetails = () => {
               />
               <button
                 onClick={() => openModal('updateprofile')}
-                className="w-full px-6 py-2 text-sm text-custom-light font-semibold font-play uppercase rounded-t-xl min-w-[150px] md:bg-custom-medium border-b-4 border-custom-light hover:scale-110 transition-transform duration-300"
+                className="w-full px-6 py-2 text-sm text-white font-semibold font-play uppercase rounded-t-xl min-w-[150px] md:bg-custom-medium border-b-4 border-custom-light hover:scale-110 transition-transform duration-300"
               >
                 Edit profile
               </button>
@@ -224,8 +226,9 @@ const ProfileDetails = () => {
         </div>
         {/* Render Tab Content */}
         <div className="w-full md:my-4 overflow-x-auto border-t-4 border-b-4 border-custom-dark">
-          {isVenueManager && activeTab === 'venues' && <MyVenues />}
-          {activeTab === 'bookings' && <MyBookings />}
+        {isVenueManager && activeTab === 'venues' && <MyVenues />}
+{activeTab === 'bookings' && <MyBookings />}
+
         </div>
       </div>
       {/* Modal for updating profile or avatar */}

@@ -10,7 +10,6 @@ export async function getProfiles() {
     const getProfilesUrl = `${apiUrl}/profiles${action}`;
     const response = await authFetch(getProfilesUrl);
 
-    console.log('profile', response);
     if (!response.ok) {
       throw new Error(
         `Failed to fetch venues: ${response.status} ${response.statusText}`

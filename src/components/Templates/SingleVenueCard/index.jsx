@@ -25,8 +25,6 @@ function SingleVenuePage() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  console.log('Venues data:', venue);
-
   if (isLoading) return <div>Loading...</div>;
   if (isError || !venue) return <div>Venue not found!</div>;
 

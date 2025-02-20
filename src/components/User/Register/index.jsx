@@ -110,7 +110,6 @@ const RegistrationForm = () => {
       }
 
       const data = await response.json();
-      console.log('User Profile:', data.data);
 
       setSuccessMessage('Registration successful!');
       localStorage.setItem('user', JSON.stringify(user));

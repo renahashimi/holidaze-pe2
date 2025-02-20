@@ -23,7 +23,7 @@ const VenueManager = () => {
   const profile = JSON.parse(localStorage.getItem('user'));
   const token = localStorage.getItem('token'); // Gets the authentication token from local storage
   const userId = profile?.name || profile?.data.name; // Extract userId from the profile
-console.log(userId)
+
   /**
    * Fetches the user profile and checks if the user is a venue manager.
    * Sets the user profile and venue manager status on successful fetch.
@@ -33,9 +33,9 @@ console.log(userId)
       setLoading(true);
       try {
         const response = await authFetch(`${apiUrl}/profiles/${userId}`);
-        const { data } = await response.json();  // Destructure directly from the response
-        setUserProfile(data);  // Set the profile data
-        setIsVenueManager(data?.venueManager || false);  // Access venueManager directly
+        const { data } = await response.json();  
+        setUserProfile(data);  
+        setIsVenueManager(data?.venueManager || false);  
       } catch (error) {
         console.error('Error fetching profile:', error);
       } finally {
@@ -47,9 +47,9 @@ console.log(userId)
     if (userId) {
       fetchProfile();
     } else {
-      // Handle case where userId is not available, maybe redirect or show error
+      history.push('/login');
     }
-  }, [userId]); // Dependency array includes userId to fetch data when the user changes
+  }, [userId]); 
 
   /**
    * Handles the action of becoming a venue manager.
@@ -73,10 +73,10 @@ console.log(userId)
   
       if (response.ok) {
         const updatedProfile = await response.json();
-        const profileData = updatedProfile.data || updatedProfile;  // Check for 'data' key and extract correctly
+        const profileData = updatedProfile.data || updatedProfile;  
   
-        setUserProfile(profileData);  // Set profile data directly (without nested 'data' key)
-        localStorage.setItem('user', JSON.stringify(profileData));  // Store updated profile correctly in local storage
+        setUserProfile(profileData);  
+        localStorage.setItem('user', JSON.stringify(profileData)); 
   
         alert('You are now a venue manager!');
         window.location.reload(); 
@@ -97,10 +97,10 @@ console.log(userId)
    */
   const openModal = (formType) => {
     const contentMap = {
-      createvenue: <CreateVenueForm />, // Content for creating a venue
+      createvenue: <CreateVenueForm />, 
     };
-    setModalContent(contentMap[formType] || null); // Set the modal content based on the form type
-    setIsModalOpen(true); // Open the modal
+    setModalContent(contentMap[formType] || null); 
+    setIsModalOpen(true); 
   };
 
   /**
@@ -108,7 +108,6 @@ console.log(userId)
    */
   const closeModal = () => setIsModalOpen(false);
 
-  // If data is loading, show a loading message
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -116,21 +115,19 @@ console.log(userId)
   return (
     <div className="flex justify-start ms-5 md:ms-0 md:justify-center md:mt-6 m-auto text-right space-x-2">
       {!isVenueManager ? (
-        // If the user is not a venue manager, show the "Become a Venue Manager" button
         <button
           onClick={handleBecomeVenueManager}
-          className="flex text-sm text-center border-b-4 border-custom-dark md:border-custom-light px-3 sm:ms-4 md:ms-0 text-black md:text-white p-2 rounded hover:bg-custom-medium hover:text-white uppercase"
+          className="flex text-sm text-center font-petrona font-semibold border-b-4 border-custom-dark md:border-custom-light px-3 sm:ms-4 md:ms-0 text-black md:text-white px-2 hover:bg-custom-medium hover:text-white uppercase"
         >
           Become a Venue Manager ?
         </button>
       ) : (
-        // If the user is already a venue manager, show the "Add a new venue" button
         <button
-          onClick={() => openModal('createvenue')} // Opens modal to create a new venue
+          onClick={() => openModal('createvenue')}
           className="flex text-sm text-center border-b-4 border-custom-dark md:border-custom-light px-3 sm:ms-4 md:ms-0 text-black md:text-white p-2 rounded hover:bg-custom-medium hover:text-white"
         >
           <FaPlus />
-          <span className="text-xs ml-2 uppercase font-prata font-semibold md:text-white ">
+          <span className="flex text-sm text-center font-play font-semibold px-2 -mt-0.5 sm:ms-4 md:ms-0 text-black md:text-white px-2 hover:bg-custom-medium hover:text-white uppercase">
             Add a new venue
           </span>
         </button>

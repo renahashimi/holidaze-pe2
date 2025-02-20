@@ -80,7 +80,6 @@ const LoginForm = () => {
       }
   
       const data = await response.json();
-      console.log('User Profile:', data.data);
   
       localStorage.setItem('token', data.data.accessToken);
       localStorage.setItem('user', JSON.stringify(data.data));

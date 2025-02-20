@@ -96,6 +96,24 @@ function UpdateVenueForm({ venue, onSubmit }) {
   };
 
   /**
+   * Handles media field changes by updating the media array.
+   * @param {number} index - The index of the media item to update.
+   * @param {string} field - The field to update (either 'url' or 'alt').
+   * @param {string} value - The new value for the field.
+   */
+  const handleMediaChange = (index, field, value) => {
+    const updatedMedia = [...formData.media];
+    updatedMedia[index] = {
+      ...updatedMedia[index],
+      [field]: value,
+    };
+    setFormData({
+      ...formData,
+      media: updatedMedia,
+    });
+  };
+
+  /**
    * Handles form submission and sends the updated venue data to the API.
    * @param {React.FormEvent<HTMLFormElement>} e - The form submission event.
    */
@@ -108,7 +126,6 @@ function UpdateVenueForm({ venue, onSubmit }) {
       alert('Please enter a valid price.');
       return;
     }
-
     const maxGuests = parseInt(formData.maxGuests, 10);
     if (isNaN(maxGuests) || maxGuests <= 0) {
       alert('Please enter a valid number of guests.');
@@ -128,16 +145,12 @@ function UpdateVenueForm({ venue, onSubmit }) {
         body: JSON.stringify(updatedRequestData),
       });
 
-      const result = await response.json();
-      console.log(result);
-
       window.location.reload();
       onSubmit(formData);
     } catch (error) {
       console.error('Error updating venue:', error);
     }
   };
-
   return (
     <form
       onSubmit={handleSubmit}
@@ -317,7 +330,6 @@ function UpdateVenueForm({ venue, onSubmit }) {
             />
           </div>
         ))}
-
         <button
           type="button"
           onClick={() =>
@@ -326,15 +338,15 @@ function UpdateVenueForm({ venue, onSubmit }) {
               media: [...formData.media, { url: '', alt: '' }],
             })
           }
-          className="flex pt-1 text-sm text-black underline"
+          className="flex items-right font-petrona font-bold w-full uppercase justify-end pt-1 text-sm text-black underline"
         >
-          <GoPlus /> <span className="-mt-1">Add Media</span>
+          <GoPlus className='mt-1'/><span className="mr-2">Add Media</span>
         </button>
       </div>
 
       <button
         type="submit"
-        className="bg-custom-deep flex m-auto text-center text-white font-semibold px-4 py-1 uppercase"
+        className="bg-custom-deep hover:bg-custom-light hover:text-custom-deep hover:border-b-4 hover:border-custom-deep flex m-auto text-center text-white font-semibold px-4 py-1 uppercase"
       >
         Update Venue
       </button>

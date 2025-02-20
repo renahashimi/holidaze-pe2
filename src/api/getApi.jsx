@@ -45,7 +45,6 @@ function useApi(apiUrl) {
         }
 
         const json = await response.json();
-        console.log('Fetched data:', json);
 
         if (json.data) {
           if (Array.isArray(json.data)) {

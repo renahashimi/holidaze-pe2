@@ -103,7 +103,6 @@ function CreateVenueForm() {
 
       if (response.ok) {
         const createdVenue = await response.json();
-        console.log('Created Venue:', createdVenue);
         alert('Venue created successfully!');
         window.location.reload();
       } else {
@@ -269,35 +268,33 @@ function CreateVenueForm() {
         <label className="flex text-left text-m uppercase">Media</label>
         {formData.media.map((media, index) => (
           <div key={index} className="mb-2 relative">
-            <input
-              type="text"
-              placeholder="Image URL"
-              value={media.url}
-              onChange={(e) => {
-                handleMediaChange(index, 'url', e.target.value);
-                handleMediaChange(index, 'alt', formData.name || 'Image');
-              }}
-              className="w-full p-2 border rounded mb-2"
-            />
-            {media.url && (
-              <div className="relative mb-2">
-                <img
-                  src={media.url}
-                  alt={formData.name || 'Image'}
-                  className="w-3/4 h-28 rounded-md"
-                />
-                <button
-                  type="button"
-                  onClick={() => {
-                    const updatedMedia = formData.media.filter((_, idx) => idx !== index);
-                    setFormData({ ...formData, media: updatedMedia });
-                  }}
-                  className="absolute text-3xl top-10 right-4 text-black hover:text-custom-dark  px-2 rounded-full"
-                >
-                  <MdDeleteForever />
-                </button>
-              </div>
-            )}
+           <input
+  type="text"
+  placeholder="Image URL"
+  value={media.url}
+  onChange={(e) => handleMediaChange(index, 'url', e.target.value)}
+  className="w-full p-2 border rounded mb-2"
+/>
+           {media.url && (
+  <div className="relative mb-2">
+    <img
+      src={media.url}
+      alt={media.alt || 'Image'}
+      className="w-3/4 h-28 rounded-md"
+    />
+    <button
+      type="button"
+      onClick={() => {
+        const updatedMedia = formData.media.filter((_, idx) => idx !== index);
+        setFormData({ ...formData, media: updatedMedia });
+      }}
+      className="absolute text-3xl top-10 right-4 text-black hover:text-custom-dark px-2 rounded-full"
+    >
+      <MdDeleteForever />
+    </button>
+  </div>
+)}
+
           </div>
         ))}
         <button
@@ -305,20 +302,17 @@ function CreateVenueForm() {
           onClick={() =>
             setFormData({
               ...formData,
-              media: [
-                ...formData.media,
-                { url: '', alt: formData.name || 'Image' },
-              ],
+              media: [...formData.media, { url: '', alt: '' }],
             })
           }
-          className="flex pt-1 text-base text-black underline"
+          className="flex items-right font-petrona font-bold w-full uppercase justify-end pt-1 text-sm text-black underline"
         >
-          <GoPlus /> <span className="-mt-1">Add Media</span>
+          <GoPlus className='mt-1'/><span className="mr-2">Add Media</span>
         </button>
       </div>
       <button
         type="submit"
-        className="bg-custom-deep flex m-auto text-center text-white font-semibold px-4 py-1 uppercase"
+        className="bg-custom-deep hover:bg-custom-light hover:text-custom-deep hover:border-b-4 hover:border-custom-deep flex m-auto text-center text-white font-semibold px-4 py-1 uppercase"
       >
         Create Venue
       </button>
