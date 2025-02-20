@@ -1,65 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import VenueCard from '../../Templates/VenueCard';
-import {
-  FaWifi,
-  FaParking,
-  FaCoffee,
-  FaPaw,
-  FaChevronDown,
-  FaChevronUp,
-  FaTimes,
-} from 'react-icons/fa';
+import { FaWifi, FaParking, FaCoffee, FaPaw, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 /**
- * The `VenueSearch` component provides a search interface for filtering and sorting venues.
- * It allows users to search for venues based on name, location, and specific filters such as facilities and date.
- * 
- * @component
- * @example
- * return <VenueSearch venues={someVenueData} />;
+ * VenueSearch component handles venue search functionality with filters, sorting options, and venue display.
  * 
  * @param {Object} props - The component props.
- * @param {Array} props.venues - The list of venue objects to display and filter.
+ * @param {Array} props.venues - The list of venues to be displayed and filtered.
+ * 
+ * @returns {JSX.Element} The VenueSearch component.
  */
 const VenueSearch = ({ venues = [] }) => {
-  /**
-   * State for storing the search query entered by the user.
-   * @type {string}
-   */
   const [searchQuery, setSearchQuery] = useState('');
-
-  /**
-   * State for storing the list of venues after applying filters and search query.
-   * @type {Array}
-   */
   const [filteredVenues, setFilteredVenues] = useState([]);
-
-  /**
-   * State that tracks whether a search has been performed.
-   * @type {boolean}
-   */
   const [searchPerformed, setSearchPerformed] = useState(false);
-
-  /**
-   * State for controlling the visibility of the filter details section.
-   * @type {boolean}
-   */
   const [showDetails, setShowDetails] = useState(false);
-
-  /**
-   * State for managing the selected date sort option ('newest' or 'oldest').
-   * @type {string | null}
-   */
   const [dateSortOption, setDateSortOption] = useState(null);
-
-  /**
-   * State for managing filter options like wifi, parking, breakfast, and pets.
-   * @type {Object}
-   * @property {boolean} wifi - Whether the wifi filter is active.
-   * @property {boolean} parking - Whether the parking filter is active.
-   * @property {boolean} breakfast - Whether the breakfast filter is active.
-   * @property {boolean} pets - Whether the pets filter is active.
-   */
   const [filters, setFilters] = useState({
     wifi: false,
     parking: false,
@@ -67,15 +23,10 @@ const VenueSearch = ({ venues = [] }) => {
     pets: false,
   });
 
-  /**
-   * Reference for the search bar element to detect outside clicks.
-   * @type {Object}
-   */
   const searchRef = useRef(null);
 
   /**
-   * Effect hook that listens for clicks outside the search bar to close the filter details and reset the search.
-   * This runs only once during component mount.
+   * Effect hook to handle clicks outside the search component to close the details and clear search.
    */
   useEffect(() => {
     const handleOutsideClick = (e) => {
@@ -90,22 +41,21 @@ const VenueSearch = ({ venues = [] }) => {
   }, []);
 
   /**
-   * Toggles a specific filter option (e.g., wifi, parking) between true and false.
+   * Handles filter changes by toggling the state of a given filter.
    * 
-   * @param {string} key - The filter key (e.g., 'wifi', 'parking', etc.).
+   * @param {string} key - The filter key to toggle.
    */
   const handleFilterChange = (key) => {
     setFilters((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
   /**
-   * Toggles the visibility of the filter details section.
+   * Toggles the visibility of the details section.
    */
   const toggleDetails = () => setShowDetails(!showDetails);
 
   /**
-   * Handles the search functionality by filtering venues based on the search query, selected filters, and date sorting.
-   * It updates the `filteredVenues` state with the filtered and sorted venue list.
+   * Handles search functionality, applying filters and sorting the venues based on the search query.
    */
   const handleSearch = () => {
     const queryLower = searchQuery.toLowerCase();
@@ -136,7 +86,7 @@ const VenueSearch = ({ venues = [] }) => {
   };
 
   /**
-   * Clears the search query, filtered venues, and resets all filters.
+   * Clears the search input, filters, and reset the search state.
    */
   const handleClearSearch = () => {
     setSearchQuery('');
@@ -152,22 +102,24 @@ const VenueSearch = ({ venues = [] }) => {
   };
 
   /**
-   * Handles the sorting of venues based on the selected date option ('newest' or 'oldest').
+   * Handles sorting venues by date, based on the selected sort option.
    * 
-   * @param {string} option - The selected sort option ('newest' or 'oldest').
+   * @param {string} option - The sort option, either 'newest' or 'oldest'.
    */
   const handleDateSort = (option) => {
     setDateSortOption(option);
     handleSearch();
   };
 
+  const location = window.location.pathname;
+
   return (
     <div
       className="block m-auto max-w-[1300px] justify-center bg-white"
       ref={searchRef}
     >
-      <div className="m-auto justify-center sm:flex bg-custom-dark max-w-[700px] sm:-mt-16 sm:pt-4 z-[999] relative sm:rounded-t">
-        <div className="search-bar flex w-full justify-between px-4 pt-3 sm:pt-1 pb-4 md:mx-6">
+      <div className={`m-auto justify-center sm:flex sm:-mt-16 sm:pt-4 z-[999] relative sm:rounded-t ${location === "/" ? "bg-custom-dark max-w-[700px]" : "bg-custom-light border-t-2 border-custom-deep"}`}>
+        <div className={`search-bar flex w-full justify-between ${location === "/" ? "bg-custom-dark px-4 pt-3 sm:pt-1 pb-4 md:mx-6" : "bg-custom-light ps-2 pb-2 max-w-[700px]"}`}>
           <input
             type="text"
             placeholder="Search"
@@ -182,8 +134,8 @@ const VenueSearch = ({ venues = [] }) => {
           />
           <button
             onClick={toggleDetails}
-            className="flex text-white hover:text-custom-deep border-2 border-white font-petrona font-semibold text-sm py-2 px-3 m-3 hover:bg-custom-light border-2 border-custom-deep rounded"
-          >
+            className={`flex hover:text-custom-deep font-petrona font-semibold text-base py-2 px-3 m-3 hover:bg-custom-light border-2 border-custom-deep rounded ${location === "/" ? "bg-custom-dark text-white border-none" : "bg-whitet text-custom-deep"}`}>
+          
             FILTER
             <span className="ps-2 mt-1 pb-0 mb-0">
               {showDetails ? <FaChevronUp /> : <FaChevronDown />}
@@ -193,7 +145,7 @@ const VenueSearch = ({ venues = [] }) => {
       </div>
 
       {showDetails && (
-        <div className="block sm:flex justify-center sm:justify-evenly m-auto text-center my-4 max-w-[700px]">
+        <div className={`block sm:flex justify-center sm:justify-evenly m-auto text-center my-2 max-w-[700px] ${location === "/" ? "bg-custom-white" : "bg-custom-light py-6"}`}>
           <div className="block">
             <h2 className="font-petrona font-semibold text-lg text-custom deep uppercase">
               facilities
@@ -235,17 +187,17 @@ const VenueSearch = ({ venues = [] }) => {
         </div>
       )}
 
-      <div className="flex text-xs sm:text-sm m-auto justify-center px-2 text-custom-deep font-bold bg-custom-medium max-w-[700px] sm:rounded-b">
+      <div className={`flex text-xs sm:text-sm m-auto justify-center px-2 text-custom-deep font-bold max-w-[700px] ${location === "/" ? "bg-custom-medium sm:rounded-b " : "bg-white border-b-2 border-custom-deep"}`}>
         <button
           onClick={handleSearch}
-          className="search-button uppercase text-custom-deep hover:text-custom-dark bg-white hover:bg-custom-light w-[100px] px-2 py-1 m-2 border-b-4 border-custom-deep rounded"
+          className={`search-button uppercase text-custom-deep hover:text-custom-dark hover:bg-custom-light w-[100px] px-2 py-1 m-2 border-b-4 border-custom-deep rounded  ${location === "/" ? "bg-white" : "bg-custom-light"}`}
           aria-label="Search"
         >
           Search
         </button>
         <button
           onClick={handleClearSearch}
-          className="search-button uppercase text-custom-deep hover:text-custom-dark bg-white hover:bg-custom-light w-[100px] px-2 py-1 m-2 border-b-4 border-custom-deep rounded"
+          className={`search-button uppercase text-custom-deep hover:text-custom-dark hover:bg-custom-light w-[100px] px-2 py-1 m-2 border-b-4 border-custom-deep rounded  ${location === "/" ? "bg-white" : "bg-custom-light"}`}
           aria-label="Clear search"
         >
           Clear All
@@ -262,7 +214,9 @@ const VenueSearch = ({ venues = [] }) => {
           </button>
         )}
       </div>
-      <div className="flex flex-wrap m-auto justify-center bg-custom-medium py-2 border-t-4 border-custom-deep">
+      <div
+        className={`flex flex-wrap m-auto justify-center ${location === "/" || location === "/venues" ? (searchPerformed ? "bg-custom-medium py-2 mt-3 border-t-4 border-custom-deep" : "bg-custom-light") : "bg-custom-light"}`}
+      >
         {searchPerformed && filteredVenues.length === 0 ? (
           <p className="text-xl text-white uppercase font-petrona font-semibold py-3">
             No venues found
