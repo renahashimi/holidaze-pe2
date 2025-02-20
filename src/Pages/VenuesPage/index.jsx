@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Search from '../../components/Venues/VenueSearch/SearchVenues';
 import VenueList from '../../components/Venues/VenueList';
 import { authFetch } from '../../api/auth/authFetch';
 import { apiUrl } from '../../api/constants';
 import { Helmet } from 'react-helmet';
+import VenueSearch from '../../components/Venues/VenueSearch';
 
 /**
  * VenuesPage component displays a list of venues with search functionality.
@@ -70,12 +70,12 @@ function VenuesPage() {
         <meta name="keywords" content="Venues, Venue List, Holidaze, Book Venues" />
       </Helmet>
 
-      <div className="row justify-content-between mt-[80px]">
+      <div className="row justify-content-between max-w-[1300px] mx-auto mt-[80px]">
         <h1 className="flex m-auto justify-center text-2xl font-prata font-semibold my-6 p-3 uppercase bg-custom-light">
           Our Venues
         </h1>
-        <div>
-          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <div className='py-4 mb-10 sm:mt-[80px]'>
+        <VenueSearch venues={venues} />
         </div>
         <VenueList venues={filteredVenues} />
       </div>
