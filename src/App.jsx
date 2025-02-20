@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
+import { Routes, Route, useLocation  } from 'react-router-dom';
 import Layout from './components/Layout/layout';
 import HomePage from './Pages/HomePage';
 import VenuePage from './Pages/VenuePage';
@@ -12,7 +12,15 @@ import ContactPage from './Pages/Contact';
 import SingleProfilePage from './components/Profile/SingleProfilePage';
 
 function App() {
+  const location = useLocation();
+  const previousPath = useRef(null);
 
+  useEffect(() => {
+    if (previousPath.current) {
+      localStorage.setItem('previousVisited', previousPath.current);
+    }
+    previousPath.current = location.pathname; 
+  }, [location.pathname]);
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
