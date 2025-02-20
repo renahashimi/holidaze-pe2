@@ -48,11 +48,11 @@ function VenueList({ venues }) {
 
   return (
     <div className="w-full max-w-[1300px] mx-auto">
-      <div className="flex flex-wrap gap-5 justify-center items-center">
+      <div className="flex flex-wrap gap-3 justify-center items-center">
         {visibleVenues.map((venue) => (
           <div
             key={venue.id}
-            className="w-full sm:w-1/3 md:w-1/3 lg:w-1/4 xl:w-1/5 mb-6"
+            className="m-4"
           >
             <VenueCard venue={venue} />
           </div>
