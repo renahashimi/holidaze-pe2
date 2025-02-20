@@ -5,17 +5,50 @@
 This project is a holiday venue booking platform developed as part of the final exam for Front-End Development at Noroff.
 
 ## Description
+### Goal
+To take the skills learned over the last two years and take on an extensive project where the finished product should reflect the candidate’s general development capabilities, in addition to visual and technical skills.
 
-Holidaze is a holiday venue booking platform where users can browse, book, and manage their stay at various holiday venues. The platform provides a seamless experience with features like venue search, booking management, and a responsive design optimized for mobile devices. This project was developed as part of the final exam for Project Exam 2 in the Front-End Development course at Noroff. The app was built using React for the front-end, Tailwind CSS for styling, and Vite for fast builds and development.
+### Brief
+A newly launched accommodation booking site called Holidaze has approached you to develop a brand new front end for their application. While they have a list of required features, the design and user experience has not been specified. Working with the official API documentation, plan, design and build a modern front end accommodation booking application.
 
-## Technologies Used
+There are two aspects to this brief: the customer-facing side of the website where users can book holidays at a venue, and an admin-facing side of the website where users can register and manage venues and bookings at those venues.
 
-- **React**: A JavaScript library for building user interfaces.
-- **Tailwind CSS**: A utility-first CSS framework for creating custom designs without having to write custom CSS.
-- **Styled Components**: A library for styling components in React using tagged template literals.
-- **Prettier**: An opinionated code formatter that helps maintain a consistent code style.
-- **Vite**: A next-generation, fast build tool that serves the app in development mode and bundles it for production.
-- **ESLint**: A static code analysis tool to identify and fix problems in JavaScript code.
+User Stories
+The client has specified the following requirements in the form of User Stories:
+
+- A user may view a list of Venues
+- A user may search for a specific Venue
+- A user may view a specific Venue page by id
+- A user may view a calendar with available dates for a Venue
+- A user with a stud.noroff.no email may register as a customer
+- A registered customer may create a booking at a Venue
+- A registered customer may view their upcoming bookings
+- A user with a stud.noroff.no email may register as a Venue manager
+- A registered Venue manager may create a Venue
+- A registered Venue manager may update a Venue they manage
+- A registered Venue manager may delete a Venue they manage
+- A registered Venue manager may view bookings for a Venue they manage
+- A registered user may login
+- A registered user may update their avatar
+- A registered user may logout
+
+
+# Required Links and Technologies
+
+- **Gantt chart for project timing**: [Link to Gantt chart](https://www.notion.so/Project-Exam-2-173c10ec5f8c8065be1fe0e6af0b8281?pvs=4)
+- **Design prototype**: [Link to design prototype](https://www.figma.com/design/XvtueR0wrxpul4148ovK21/Project-Exam-2)
+- **Style guide**: [Link to style guide](https://www.figma.com/design/XvtueR0wrxpul4148ovK21/Project-Exam-2?node-id=1-5&t=nWxYrLquaaYo2jNp-1)
+- **Kanban project board**: [Link to Kanban board](https://trello.com/invite/b/677be97e42da173e51c09d7f/ATTI2c298afbeabef50d93fbbe5f7eea5f4514C86F3D/project-exam-2)
+- **Repository link**: [Link to repository](https://github.com/renahashimi/holidaze-pe2.git)
+- **Hosted application demo link**: [Link to hosted app](https://holidaze-pe2-rh.netlify.app/)
+
+**Technologies Used:**
+- React
+- Tailwind CSS
+- Styled Components
+- Prettier
+- Vite
+- ESLint
 
 ## Installation
 
@@ -24,26 +57,19 @@ Holidaze is a holiday venue booking platform where users can browse, book, and m
    ```bash
    git clone https://github.com/renahashimi/holidaze-pe2.git
    ```
-
-2. **Navigate into the project folder:**
-
-   ```bash
-   cd holidaze-pe2
-   ```
-
-3. **Install the project dependencies:**
+2. **Install the project dependencies:**
 
    ```bash
    npm install
    ```
 
-4. **Run the development server:**
+3. **Run the development server:**
 
    ```bash
    npm run dev
    ```
 
-5. **Open the app in your browser:**
+4. **Open the app in your browser:**
    Visit [http://localhost:5173](http://localhost:5173) to view the app running locally.
 
 ## Development
@@ -70,24 +96,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified, and the filenames include hashes.\
 Your app is ready to be deployed.
 
-## Preview Production Build
+## Live site - Netlify
+[Holidaze](https://holidaze-pe2-rh.netlify.app/)
 
-### `npm run preview`
-
-Preview the production build locally after building it. This command will serve the app as it will be deployed.
-
-## Format Code
-
-### `npm run format`
-
-Formats the code using Prettier to ensure consistent code style across the project.
-
-## Run Tests
-
-### `npm run test`
-
-Currently, no tests are defined in the project. This command is reserved for running tests when added.
-
-```
-
-```
