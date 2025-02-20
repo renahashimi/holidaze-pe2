@@ -27,7 +27,7 @@ function Login() {
         />
         <meta name="keywords" content="Login, Sign In, Holidaze, User Account" />
       </Helmet>
-      <div className="relative flex justify-center items-center min-h-screen mt-[60px]">
+      <div className="relative flex justify-center items-center min-h-screen mt-[60px] max-w-[1300px] mx-auto">
         <div className="absolute inset-0 hidden sm:block">
           <img
             src="/back2.jpg"

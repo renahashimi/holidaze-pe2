@@ -108,7 +108,7 @@ function VenueBookingCard({ booking }) {
       <div className="flex border-b border-5 border-custom-medium mb-4 mx-2">
         <Link
           to={`/venue/${venue.id}`}
-          className="font-prata text-custom-dark py-2 overflow-hidden truncate hover:text-custom-deep"
+          className="font-prata text-custom-deep hover:font-black hover:text-custom-medium cursor-pointer py-2 overflow-hidden truncate hover:text-custom-deep"
         >
           {booking.venue.name}
         </Link>

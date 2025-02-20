@@ -52,7 +52,7 @@ function SingleProfilePage() {
   }
 
   return (
-    <div className="block mx-auto w-full max-w-[1300px] mt-[80px] shadow-2xl z-0">
+    <div className="block mx-auto w-full max-w-[1300px] mt-[60px] shadow-2xl z-0">
       <div className="relative shadow-xl">
         <img
           src={profile?.banner?.url || "/public/FallbackImg.jpg"}
@@ -83,16 +83,16 @@ function SingleProfilePage() {
           </div>
 
           {/* Bio Section */}
-          <div className="flex justify-between mt-4 md:mt-0 md:ml-auto bg-custom-light p-8 rounded-lg">
+          <div className="flex justify-between mt-4 md:mt-0 md:ml-auto bg-custom-light p-8 rounded-lg md:min-w-[350px]">
             {/* Left Quote */}
-            <ImQuotesLeft className="md:flex font-petrona text-4xl text-custom-medium mr-3 -mt-12 -ms-10" />
+            <ImQuotesLeft className="md:flex font-petrona text-2xl md:text-4xl text-custom-medium mr-3 -mt-12 -ms-10" />
 
-            <p className="text-custom-deep font-bold italic text-sm text-center md:text-left">
+            <p className="text-custom-deep font-petrona font-bold italic text-sm md:text-base text-center md:text-left">
               {profile?.bio || "*This user has not provided a bio/quote.*"}
             </p>
 
             {/* Right Quote */}
-            <ImQuotesRight className="md:flex font-petrona text-4xl text-custom-medium self-end -me-12 -mb-10" />
+            <ImQuotesRight className="md:flex font-petrona text-2xl md:text-4xl text-custom-medium self-end -me-12 -mb-10" />
           </div>
         </div>
       </div>

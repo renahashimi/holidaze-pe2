@@ -80,7 +80,7 @@ const UpdateAvatar = () => {
       >
         <div className="flex m-auto justify-center">
           <img
-            src={avatar || '/FallbackImg.jpg'}
+            src={avatar || '/FallbackImg2.jpg'}
             alt="Profile Avatar"
             className="w-24 h-24 rounded-full object-cover"
           />

@@ -11,7 +11,7 @@ function HeroHomepage() {
   return (
     <div className="flex justify-center items-center w-full max-w-[1300px] mx-auto relative">
       <img
-        src="/cozyroom.jpg"
+        src="/CozyRoom.jpg"
         alt="Cozy Room"
         className="w-full h-auto object-contain"
       />

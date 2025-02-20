@@ -262,7 +262,7 @@ const VenueSearch = ({ venues = [] }) => {
           </button>
         )}
       </div>
-      <div className="flex flex-wrap m-auto justify-center bg-custom-medium">
+      <div className="flex flex-wrap m-auto justify-center bg-custom-medium py-2 border-t-4 border-custom-deep">
         {searchPerformed && filteredVenues.length === 0 ? (
           <p className="text-xl text-white uppercase font-petrona font-semibold py-3">
             No venues found

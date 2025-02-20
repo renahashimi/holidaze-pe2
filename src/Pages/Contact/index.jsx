@@ -26,18 +26,18 @@ const ContactPage = () => {
         />
         <meta name="keywords" content="Contact, Customer Support, Inquiries" />
       </Helmet>
-      <div className="flex relative w-full h-full mx-auto justify-center mt-[60px] max-w-[1300px]">
+      <div className="flex relative w-full h-screen mx-auto justify-center mt-[60px] max-w-[1300px]">
         {/* Background image */}
         <div className="absolute inset-0">
           <img
             src="/phone.jpg"
             alt="Phone"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[85%]"
           />
         </div>
 
         {/* Overlay for form and address info */}
-        <div className="relative flex flex-col mx-auto justify-evenly md:flex-row items-center w-full bg-black/25 text-white p-6">
+        <div className="relative flex flex-col mx-auto justify-evenly md:flex-row items-center w-full bg-black/30 text-white p-6">
           {/* Form container */}
           <div className="bg-custom-medium bg-opacity-80 text-black pt-6 md:m-5 rounded-lg shadow-lg w-full max-w-md">
             <h1 className="text-2xl sm:text-3xl font-prata text-white text-center uppercase">
@@ -46,9 +46,9 @@ const ContactPage = () => {
             <ContactUsForm />
           </div>
           {/* Address and Follow Us container */}
-          <div className="text-black rounded-lg shadow-lg w-full max-w-md flex flex-col justify-evenly h-full">
+          <div className="text-black rounded-lg w-full max-w-md flex flex-col justify-evenly h-full">
             {/* Address Info */}
-            <div className="p-4 bg-white bg-opacity-60 font-petrona mt-6">
+            <div className="p-4 bg-white bg-opacity-70 font-petrona mt-6 shadow-xl">
               <p className="font-bold text-lg md:text-xl">
                 If you have any questions or need assistance, feel free to reach
                 out to us. We’re here to help!
@@ -64,7 +64,7 @@ const ContactPage = () => {
             </div>
 
             {/* Follow Us Section */}
-            <div className="p-4 bg-white bg-opacity-60 my-6">
+            <div className="p-4 bg-white bg-opacity-70 my-10 shadow-xl">
               <p className="text-sm sm:text-base text-center text-custom-deep font-bold mb-4 font-play">
                 FOLLOW & STAY CONNECTED WITH US
               </p>

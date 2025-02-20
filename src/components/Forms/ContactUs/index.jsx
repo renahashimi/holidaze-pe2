@@ -95,9 +95,9 @@ const ContactUsForm = () => {
   };
 
   return (
-    <div className="max-w-[600px] w-full mx-auto bg-custom-light mt-5 border border-gray-300 rounded shadow-md">
+    <div className="max-w-[600px] w-full mx-auto bg-custom-light mt-5 border border-gray-300 rounded shadow-xl">
       {successMessage && (
-        <div className="bg-white w-full my-3 px-2 pt-1">
+        <div className="bg-white w-full my-3 px-2 pt-1 font-petrona font-bold text-lg">
           <p className="bg-white w-full text-custom-deep py-3 text-petrona text-center mb-4">
             {successMessage}
           </p>
@@ -117,6 +117,7 @@ const ContactUsForm = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
+            placeholder="What should we call you?"
             className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
           />
           {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
@@ -135,6 +136,7 @@ const ContactUsForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            placeholder="Type your email here"
             className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
           />
           {errors.email && (
@@ -155,6 +157,7 @@ const ContactUsForm = () => {
             name="subject"
             value={formData.subject}
             onChange={handleChange}
+            placeholder="Reason for contacting us"
             className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
           />
           {errors.subject && (
