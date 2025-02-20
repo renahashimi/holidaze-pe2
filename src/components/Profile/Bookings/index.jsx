@@ -242,14 +242,14 @@ function BookingPage() {
           {token ? (
             <button
               onClick={handleBookingSubmit}
-              className="book-now-btn bg-white uppercase font-extrabold border border-4 border-custom-deep px-3 hover:bg-custom-deep hover:text-white rounded"
+              className="bg-white uppercase font-extrabold border-b-4 border-custom-deep px-3 pt-1 hover:bg-custom-deep hover:text-white rounded"
             >
               Book this venue
             </button>
           ) : (
-            <Link to="/login">
-              <p className="login-required-btn text-center uppercase border border-4 border-custom-deep px-3 rounded">
-                Log in to book
+            <Link to="/login" onClick={() => localStorage.setItem('lastVisited', window.location.pathname)}>
+              <p className="bg-white uppercase font-extrabold border-b-4 border-custom-deep px-3 pt-1 hover:bg-custom-deep hover:text-white rounded">
+                Log in to book this venue
               </p>
             </Link>
           )}

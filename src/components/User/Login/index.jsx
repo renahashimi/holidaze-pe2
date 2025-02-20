@@ -83,8 +83,9 @@ const LoginForm = () => {
   
       localStorage.setItem('token', data.data.accessToken);
       localStorage.setItem('user', JSON.stringify(data.data));
-  
-      navigate('/profile'); 
+      
+      const previousVisited = localStorage.getItem('previousVisited')
+      navigate(previousVisited || '/profile'); 
       window.location.reload();
     } catch (err) {
       setErrorMessage(err.message);
