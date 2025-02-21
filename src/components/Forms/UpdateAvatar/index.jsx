@@ -73,7 +73,7 @@ const UpdateAvatar = () => {
   };
 
   return (
-    <div className="bg-custom-light p-2">
+    <div className="bg-custom-light p-2 md:w-[450px]">
       <form
         onSubmit={handleSubmit}
         className="updateavatar text-center font-petrona"
@@ -86,7 +86,7 @@ const UpdateAvatar = () => {
           />
         </div>
         <div className="grid my-5">
-          <label htmlFor="avatar" className="text-left text-m uppercase">
+          <label htmlFor="avatar" className="font-bold text-left text-m uppercase">
             Avatar
           </label>
           <div className="flex items-center">
@@ -96,7 +96,7 @@ const UpdateAvatar = () => {
               value={avatar}
               onChange={handleUrlChange}
               placeholder="Enter image URL"
-              className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
+              className="w-full text-sm bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
             />
             <button
               type="button"

@@ -154,7 +154,7 @@ function UpdateVenueForm({ venue, onSubmit }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="font-petrona uppercase space-y-5 max-w-lg mx-auto p-4 bg-custom-light rounded-lg shadow-md"
+      className="md:w-[450px] font-petrona uppercase space-y-5 max-w-lg mx-auto p-4 bg-custom-light rounded-lg shadow-md"
     >
       <div className="mb-4">
         <label className="block font-medium">Name</label>

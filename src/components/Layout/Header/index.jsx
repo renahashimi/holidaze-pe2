@@ -100,7 +100,7 @@ function Header() {
       </div>
 
       {/* Desktop Navigation */}
-      <nav className="md:flex md:ml-auto font-prata hidden md:text-[12px] lg:text-sm xl:text-base uppercase">
+      <nav className="md:flex md:ml-auto font-prata hidden md:text-[11px] lg:text-sm xl:text-base uppercase">
         <ul className="flex items-center space-x-1 lg:space-x-3 xl:space-x-4">
           <li>
             <NavLink

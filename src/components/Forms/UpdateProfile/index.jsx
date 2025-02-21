@@ -145,7 +145,7 @@ const UpdateProfileForm = () => {
   };
 
   return (
-    <div className="bg-custom-light p-4">
+    <div className="bg-custom-light p-4 md:w-[450px]">
       <form onSubmit={handleSubmit} className="font-petrona space-y-6 -mt-6">
         <img
           src={formData.avatarUrl || '/FallbackImg2.jpg'}
@@ -153,7 +153,7 @@ const UpdateProfileForm = () => {
           className="w-24 h-24 mt-10 rounded-full object-cover"
         />
         <div>
-          <label htmlFor="avatar" className="block mb-2 font-medium uppercase">
+          <label htmlFor="avatar" className="block font-bold mb-2 uppercase">
             Avatar
           </label>
           <div className="flex items-center space-x-2">
@@ -164,7 +164,7 @@ const UpdateProfileForm = () => {
               placeholder="Enter image URL"
               value={formData.avatarUrl || ''}
               onChange={handleChange}
-              className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
+              className="w-full text-sm bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
             />
             <button
               type="button"
@@ -182,7 +182,7 @@ const UpdateProfileForm = () => {
           className="w-64 h-32 rounded-lg object-cover"
         />
         <div>
-          <label htmlFor="banner" className="block mb-2 font-medium uppercase">
+          <label htmlFor="banner" className="block mb-2 font-bold uppercase">
             Banner
           </label>
           <div className="flex items-center space-x-2">
@@ -193,7 +193,7 @@ const UpdateProfileForm = () => {
               placeholder="Enter image URL"
               value={formData.bannerUrl || ''}
               onChange={handleChange}
-              className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
+              className="w-full text-sm bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
             />
             <button
               type="button"

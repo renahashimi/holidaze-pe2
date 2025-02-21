@@ -121,7 +121,7 @@ function CreateVenueForm() {
   return (
     <form
       onSubmit={handleFormSubmit}
-      className="font-petrona space-y-5 max-w-lg mx-auto p-4 bg-custom-light rounded-lg shadow-md"
+      className="md:w-[450px] font-petrona space-y-5 max-w-lg mx-auto p-4 bg-custom-light rounded-lg shadow-md"
     >
       <div className="mb-4">
         <label className="flex text-left text-m uppercase">Title</label>
