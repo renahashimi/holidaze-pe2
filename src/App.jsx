@@ -9,7 +9,7 @@ import VenuesPage from './Pages/VenuesPage';
 import Profile from './Pages/Profile';
 import AboutUsPage from './Pages/AboutUs';
 import ContactPage from './Pages/Contact';
-import SingleProfilePage from './components/Profile/SingleProfilePage';
+import SingleProfile from './Pages/SingleProfile';
 
 function App() {
   const location = useLocation();
@@ -30,7 +30,7 @@ function App() {
         <Route path="venues" element={<VenuesPage />} />
         <Route path="venue/:id" element={<VenuePage />} />
         <Route path="profile" element={<Profile />} />
-        <Route path="profiles/:name" element={<SingleProfilePage />} />
+        <Route path="profiles/:name" element={<SingleProfile />} />
         <Route path="about" element={<AboutUsPage />} />
         <Route path="contact" element={<ContactPage />} />
       </Route>
