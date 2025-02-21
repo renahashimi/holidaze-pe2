@@ -105,7 +105,7 @@ function MyVenues() {
   const scroll = (direction) => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
-        left: direction === 'left' ? -250 : 250,
+        left: direction === 'left' ? -260 : 260,
         behavior: 'smooth',
       });
     }
@@ -174,7 +174,7 @@ function MyVenues() {
                         {venue.bookings.map((booking) => (
                           <li
                             key={booking.id}
-                            className="border-b border-custom-medium py-2 text-xs text-custom-deep"
+                            className="font-petrona border-b border-custom-medium py-2 text-xs text-custom-deep"
                           >
                             <p>
                               <strong>Name:</strong> {booking.customer.name}
@@ -182,14 +182,14 @@ function MyVenues() {
                             <p>
                               <strong>Email:</strong> {booking.customer.email}
                             </p>
-                            <p>
+                            <p className='text-sm mt-2'>
                               <strong>Guests:</strong> {booking.guests}
                             </p>
-                            <p>
+                            <p className='text-sm'>
                               <strong>From:</strong>{' '}
                               {new Date(booking.dateFrom).toLocaleDateString()}
                             </p>
-                            <p>
+                            <p className='text-sm'>
                               <strong>To:</strong>{' '}
                               {new Date(booking.dateTo).toLocaleDateString()}
                             </p>
@@ -208,13 +208,13 @@ function MyVenues() {
           )}
         </div>
         <button
-        className="absolute my-[30px] text-4xl text-custom-deep left-20 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
+        className="absolute my-[30px] text-4xl text-custom-deep left-20 lg:left-60 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
         onClick={() => scroll('left')}
         >
           ❮
         </button>
         <button
-        className="absolute my-[30px] text-4xl text-custom-deep right-20 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
+        className="absolute my-[30px] text-4xl text-custom-deep right-20 lg:right-60 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
         onClick={() => scroll('right')}
         >
           ❯

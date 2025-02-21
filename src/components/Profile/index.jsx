@@ -225,7 +225,7 @@ const ProfileDetails = () => {
           </div>
         </div>
         {/* Render Tab Content */}
-        <div className="w-full md:my-4 overflow-x-auto border-t-4 border-b-4 border-custom-dark">
+        <div className="w-full block md:my-4 pb-10 overflow-x-auto border-t-4 border-b-4 border-custom-dark">
           {isVenueManager && activeTab === 'venues' && <MyVenues />}
           {activeTab === 'bookings' && <MyBookings />}
         </div>

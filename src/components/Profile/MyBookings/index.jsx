@@ -75,7 +75,7 @@ function MyBookings() {
 
   const scroll = (direction) => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft += direction === 'left' ? -300 : 300;
+      scrollContainerRef.current.scrollLeft += direction === 'left' ? -240 : 240;
     }
   };
 
@@ -92,7 +92,7 @@ function MyBookings() {
           {/* Scrollable Container */}
           <div
             ref={scrollContainerRef}
-            className="flex space-x-4 overflow-x-auto scrollbar-hide"
+            className="flex space-x-4 overflow-y-scroll h-full scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200"
           >
             {bookings.map((booking) => (
               <div key={booking.id} className="bg-white min-w-[300px]">
@@ -116,14 +116,14 @@ function MyBookings() {
       )}
       {/* Left Scroll Button */}
       <button
-        className="absolute mt-[30px] text-4xl text-custom-deep left-40 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
+        className="absolute mt-[30px] text-4xl text-custom-deep left-20 lg:left-60 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
         onClick={() => scroll('left')}
       >
         ❮
       </button>
       {/* Right Scroll Button */}
       <button
-        className="absolute mt-[30px] text-4xl text-custom-deep right-40 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
+        className="absolute mt-[30px] text-4xl text-custom-deep right-20 lg:right-60 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
         onClick={() => scroll('right')}
       >
         ❯
