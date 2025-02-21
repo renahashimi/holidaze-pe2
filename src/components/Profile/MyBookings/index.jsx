@@ -116,14 +116,14 @@ function MyBookings() {
       )}
       {/* Left Scroll Button */}
       <button
-        className="absolute mt-[30px] text-4xl text-custom-deep left-20 lg:left-60 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
+        className="absolute mt-[30px] text-4xl text-custom-deep left-20 lg:left-60 top-2/2 transform -translate-y-2/2 pb-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
         onClick={() => scroll('left')}
       >
         ❮
       </button>
       {/* Right Scroll Button */}
       <button
-        className="absolute mt-[30px] text-4xl text-custom-deep right-20 lg:right-60 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
+        className="absolute mt-[30px] text-4xl text-custom-deep right-20 lg:right-60 top-2/2 transform -translate-y-2/2 pb-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
         onClick={() => scroll('right')}
       >
         ❯

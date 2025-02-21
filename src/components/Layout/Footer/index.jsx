@@ -92,7 +92,7 @@ function Footer() {
           <p className="sm:hidden flex font-petrona text-xs justify-center text-sm text-custom-deep ">
             COPYRIGHT @ 2025 HOLIDAZE
           </p>
-          <h3 className="font-semibold font-rubik sm:me-5 text-custom-dark text-lg">
+          <h3 className="font-rubik sm:me-5 text-custom-dark text-lg">
             HOLIDAZE
           </h3>
         </div>

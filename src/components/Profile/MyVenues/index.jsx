@@ -162,7 +162,7 @@ function MyVenues() {
 
                 <button
                   onClick={() => toggleBookingsMenu(venue.id)}
-                  className="mx-auto border-b-4 border-custom-deep text-custom-dark uppercase my-6 p-1"
+                  className="mx-auto font-prata border-b-4 border-custom-deep text-custom-dark uppercase my-6 p-1"
                 >
                   {`Bookings (${venue.bookings ? venue.bookings.length : 0})`}
                 </button>
@@ -208,13 +208,13 @@ function MyVenues() {
           )}
         </div>
         <button
-        className="absolute my-[30px] text-4xl text-custom-deep left-20 lg:left-60 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
+        className="absolute my-[40px] text-4xl text-custom-deep left-20 lg:left-60 top-2/2 transform -translate-y-2/2 pb-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
         onClick={() => scroll('left')}
         >
           ❮
         </button>
         <button
-        className="absolute my-[30px] text-4xl text-custom-deep right-20 lg:right-60 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
+        className="absolute my-[40px] text-4xl text-custom-deep right-20 lg:right-60 top-2/2 transform -translate-y-2/2 pb-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
         onClick={() => scroll('right')}
         >
           ❯
