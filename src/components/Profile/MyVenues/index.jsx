@@ -105,7 +105,7 @@ function MyVenues() {
   const scroll = (direction) => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
-        left: direction === 'left' ? -300 : 300,
+        left: direction === 'left' ? -250 : 250,
         behavior: 'smooth',
       });
     }
@@ -115,7 +115,7 @@ function MyVenues() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="row justify-content-between m-4 p-4 pb-[60px]">
+    <div className="row justify-content-between h-full m-4 p-4 pb-[80px]">
       <h2 className="text-2xl text-custom-deep font-bold mb-4 font-prata uppercase">
         My Venues
       </h2>
@@ -208,13 +208,13 @@ function MyVenues() {
           )}
         </div>
         <button
-        className="absolute mt-[30px] text-4xl text-custom-deep left-40 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
+        className="absolute my-[30px] text-4xl text-custom-deep left-20 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
         onClick={() => scroll('left')}
         >
           ❮
         </button>
         <button
-        className="absolute mt-[30px] text-4xl text-custom-deep right-40 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
+        className="absolute my-[30px] text-4xl text-custom-deep right-20 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
         onClick={() => scroll('right')}
         >
           ❯
