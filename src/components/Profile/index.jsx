@@ -122,7 +122,7 @@ const ProfileDetails = () => {
         <img
           src={profile?.banner?.url || '/FallbackImg2.jpg'}
           alt={profile?.banner?.alt || 'Profile banner'}
-          className="flex w-full max-h-[150px] md:max-h-[200px] object-cover"
+          className="flex w-full max-h-[170px] md:max-h-[250px] object-cover"
         />
         <button
           onClick={() => openModal('updateprofile')}
@@ -226,9 +226,8 @@ const ProfileDetails = () => {
         </div>
         {/* Render Tab Content */}
         <div className="w-full md:my-4 overflow-x-auto border-t-4 border-b-4 border-custom-dark">
-        {isVenueManager && activeTab === 'venues' && <MyVenues />}
-{activeTab === 'bookings' && <MyBookings />}
-
+          {isVenueManager && activeTab === 'venues' && <MyVenues />}
+          {activeTab === 'bookings' && <MyBookings />}
         </div>
       </div>
       {/* Modal for updating profile or avatar */}
