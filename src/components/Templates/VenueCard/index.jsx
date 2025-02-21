@@ -98,14 +98,14 @@ function VenueCard({ venue }) {
           <>
             <button
               onClick={handlePrevImage}
-              className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-custom-dark px-2 py-1 rounded-full text-white text-xl"
-            >
+              className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-custom-light/40 hover:bg-custom-dark/90 p-2 rounded text-custom-deep hover:text-white text-4xl"
+              >
               ❮
             </button>
             <button
               onClick={handleNextImage}
-              className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-custom-dark px-2 py-1 rounded-full text-white text-xl"
-            >
+              className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-custom-light/40 hover:bg-custom-dark/90 p-2 rounded text-custom-deep hover:text-white text-4xl"
+              >
               ❯
             </button>
           </>

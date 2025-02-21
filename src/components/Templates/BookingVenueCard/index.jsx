@@ -87,14 +87,14 @@ function VenueBookingCard({ booking }) {
               <>
                 <button
                   onClick={handlePreviousImage}
-                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-custom-dark text-white p-2 rounded-full"
-                >
+                  className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-custom-light/40 hover:bg-custom-dark/90 p-2 rounded text-custom-deep hover:text-white text-4xl"
+                  >
                   ❮
                 </button>
                 <button
                   onClick={handleNextImage}
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-custom-dark text-white p-2 rounded-full"
-                >
+                  className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-custom-light/40 hover:bg-custom-dark/90 p-2 rounded text-custom-deep hover:text-white text-4xl"
+                  >
                   ❯
                 </button>
               </>

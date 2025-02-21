@@ -103,14 +103,14 @@ function SingleVenuePage() {
             <>
               <button
                 onClick={goToPreviousImage}
-                className="absolute top-1/2 left-2 transform -translate-y-1/2 text-white text-3xl z-10"
-              >
+                className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-custom-light/40 hover:bg-custom-dark/90 p-2 rounded text-custom-deep hover:text-white text-4xl"
+                >
                 &#10094;
               </button>
               <button
                 onClick={goToNextImage}
-                className="absolute top-1/2 right-2 transform -translate-y-1/2 text-white text-3xl z-10"
-              >
+                className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-custom-light/40 hover:bg-custom-dark/90 p-2 rounded text-custom-deep hover:text-white text-4xl"
+                >
                 &#10095;
               </button>
             </>
