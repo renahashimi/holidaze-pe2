@@ -33,21 +33,21 @@ function Profile() {
       </Helmet>
 
       {!token ? (
-        <div className="m-auto text-center mt-[130px] max-w-[400px]">
-          <p className="text-lg font-prata p-3 font-semibold">
+        <div className="m-auto text-center mt-[160px] max-w-[450px]">
+          <p className="text-xl font-prata p-3 font-semibold">
             Please log in or create an account to access your profile and view
             your content.{' '}
           </p>
           <div className="mt-4 uppercase font-petrona text-xl">
             <Link
               to="/login"
-              className="text-custom-deep hover:text-custom-medium mr-4"
+              className="text-custom-deep font-bold px-2 border-b-4 border-custom-medium hover:bg-custom-light hover:pt-2 mr-10"
             >
               Login
             </Link>
             <Link
               to="/register"
-              className="text-custom-deep hover:text-custom-medium"
+              className="text-custom-deep font-bold px-2 border-b-4 border-custom-medium hover:bg-custom-light hover:pt-2 "
             >
               Register
             </Link>
