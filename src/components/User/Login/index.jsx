@@ -113,6 +113,7 @@ const LoginForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            placeholder='Enter your email'
             className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
           />
           {errors.email && (
@@ -133,15 +134,14 @@ const LoginForm = () => {
             name="password"
             value={formData.password}
             onChange={handleChange}
+            placeholder='Enter your password'
             className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
           />
           {errors.password && (
             <p className="text-red-500 text-sm">{errors.password}</p>
           )}
         </div>
-        <p className="underline text-sm -mt-3 ms-1 mb-5">Forgot password</p>
-
-        <div className="flex justify-center m-auto">
+        <div className="flex justify-center m-auto mt-10">
           <button
             type="submit"
             className="w-64 bg-custom-dark font-petrona font-semibold text-white uppercase text-2xl py-2 px-4 rounded hover:bg-custom-deep"

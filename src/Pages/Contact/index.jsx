@@ -26,7 +26,7 @@ const ContactPage = () => {
         />
         <meta name="keywords" content="Contact, Customer Support, Inquiries" />
       </Helmet>
-      <div className="flex relative w-full h-screen mx-auto justify-center mt-[60px] max-w-[1300px]">
+      <div className="flex relative w-full md:h-screen mx-auto justify-center mt-[60px] max-w-[1300px]">
         {/* Background image */}
         <div className="absolute inset-0">
           <img
@@ -73,19 +73,19 @@ const ContactPage = () => {
                   href="https://www.facebook.com"
                   className="text-black hover:text-blue-700"
                 >
-                  <FaFacebookSquare size={24} />
+                  <FaFacebookSquare size={36} />
                 </a>
                 <a
                   href="https://www.instagram.com"
                   className="text-black hover:text-pink-700"
                 >
-                  <FaInstagramSquare size={24} />
+                  <FaInstagramSquare size={36} />
                 </a>
                 <a
                   href="https://www.twitter.com"
                   className="text-black hover:text-green-700"
                 >
-                  <FaSquareXTwitter size={24} />
+                  <FaSquareXTwitter size={36} />
                 </a>
               </div>
             </div>

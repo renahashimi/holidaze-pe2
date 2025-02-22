@@ -10,22 +10,22 @@ import React from 'react';
 const QuoteSection = () => {
   return (
     <div className="quote-section block inset-0 bg-gradient-to-b from-custom-deep/40 via-custom-light/10 to-transparent z-10">
-      <div className="block md:flex mb-[50px] py-5 grid mx-auto font-petrona justify-center md:flex md:justify-evenly text-center">
-        <div className="m-2 bg-white p-3 mx-auto w-3/4 md:max-w-[260px] shadow-lg rounded-xl">
+      <div className="block md:flex mb-[50px] gap-1 py-5 grid mx-auto font-petrona justify-center md:flex md:justify-evenly text-center">
+        <div className="m-2 bg-white p-3 mx-auto w-3/4 md:max-w-[350px] shadow-lg rounded-xl">
           <h4 className="uppercase my-3 text-custom-dark font-play font-semibold">{`Flexible Options`}</h4>
           <p className="text-custom-deep">
             With a range of budgets and accommodations, Airbnb ensures there’s
             something for every traveler, anywhere in the world.
           </p>
         </div>
-        <div className="m-2 bg-white p-3 mx-auto w-3/4 md:max-w-[260px] shadow-lg rounded-xl">
+        <div className="m-2 bg-white p-3 mx-auto w-3/4 md:max-w-[350px] shadow-lg rounded-xl">
           <h4 className="uppercase my-3 text-custom-dark font-play font-semibold">{`Local Insights`}</h4>
           <p className="text-custom-deep">
             Stay like a local with hosts who provide personalized tips and
             recommendations for an authentic experience.
           </p>
         </div>
-        <div className="m-2 bg-white p-3 mx-auto w-3/4 md:max-w-[260px] shadow-lg rounded-xl">
+        <div className="m-2 bg-white p-3 mx-auto w-3/4 md:max-w-[350px] shadow-lg rounded-xl">
           <h4 className="uppercase my-3 text-custom-dark font-play font-semibold">{`Unique Stays`}</h4>
           <p className="text-custom-deep">
             Airbnb offers one-of-a-kind properties, from treehouses to

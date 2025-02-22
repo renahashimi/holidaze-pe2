@@ -161,6 +161,7 @@ const RegistrationForm = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
+            placeholder='Enter your name'
             className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
           />
           {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
@@ -179,6 +180,7 @@ const RegistrationForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            placeholder='Enter your email'
             className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
           />
           {errors.email && (
@@ -199,6 +201,7 @@ const RegistrationForm = () => {
             name="password"
             value={formData.password}
             onChange={handleChange}
+            placeholder='Enter your password'
             className="w-full bg-custom-light px-3 py-2 border-b-2 border-custom-dark rounded-none"
           />
           {errors.password && (

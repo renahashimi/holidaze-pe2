@@ -1,5 +1,10 @@
+/**
+ * MyVenues Component
+ * Displays a list of venues owned by the user, allowing updates and deletions.
+ * Includes functionality to toggle bookings and scroll through venues.
+ */
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import SimpleVenueCard from '../../Templates/SimpleCard';
 import UpdateVenueForm from '../../Forms/UpdateVenue';
 import { authFetch } from '../../../api/auth/authFetch';
@@ -24,6 +29,9 @@ function MyVenues() {
 
   if (!profile) return null;
 
+  /**
+   * Fetches venues owned by the logged-in user.
+   */
   useEffect(() => {
     const fetchVenues = async () => {
       setLoading(true);
@@ -60,13 +68,24 @@ function MyVenues() {
     }
   }, [token]);
 
+  /**
+   * Opens the modal for updating a venue.
+   * @param {Object} venue - The venue to be updated.
+   */
   const openModal = (venue) => {
     setModalContent(<UpdateVenueForm venue={venue} />);
     setIsModalOpen(true);
   };
 
+  /**
+   * Closes the modal.
+   */
   const closeModal = () => setIsModalOpen(false);
 
+  /**
+   * Deletes a venue after user confirmation.
+   * @param {string} venueId - The ID of the venue to delete.
+   */
   const deleteVenue = async (venueId) => {
     if (!window.confirm('Are you sure you want to delete this venue?')) return;
     try {
@@ -91,10 +110,18 @@ function MyVenues() {
     }
   };
 
+  /**
+   * Toggles the options menu for a specific venue.
+   * @param {string} venueId - The ID of the venue.
+   */
   const toggleOptionsMenu = (venueId) => {
     setActiveOptionsToggle((prev) => (prev === venueId ? null : venueId));
   };
 
+  /**
+   * Toggles the bookings menu for a specific venue.
+   * @param {string} venueId - The ID of the venue.
+   */
   const toggleBookingsMenu = (venueId) => {
     setActiveBookingsToggle((prev) => ({
       ...prev,
@@ -102,6 +129,10 @@ function MyVenues() {
     }));
   };
 
+  /**
+   * Scrolls the venue list left or right.
+   * @param {'left' | 'right'} direction - The direction to scroll.
+   */
   const scroll = (direction) => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollBy({
@@ -138,19 +169,19 @@ function MyVenues() {
                     <SlOptions />
                   </button>
                   {activeOptionsToggle === venue.id && (
-                    <div className="absolute right-0 border border-custom-deep w-40 bg-white rounded shadow-md mt-2 z-50">
+                    <div className="absolute font-petrona text-end border border-2 border-custom-deep w-full bg-white border rounded shadow-md mt-[130px] z-[99]">
                       <button
                         onClick={() => {
                           openModal(venue);
                           setActiveOptionsToggle(null);
                         }}
-                        className="block w-full px-4 py-2 text-left hover:bg-custom-deep hover:text-white"
+                        className="block w-full text-right px-4 py-2 uppercase hover:bg-custom-deep hover:text-white"
                       >
                         Update
                       </button>
                       <button
                         onClick={() => deleteVenue(venue.id)}
-                        className="block w-full px-4 py-2 text-left text-red-600 hover:bg-red-600 hover:text-white"
+                        className="block w-full text-right px-4 py-2 uppercase font-bold hover:bg-custom-deep hover:text-white"
                       >
                         Delete
                       </button>
@@ -204,23 +235,31 @@ function MyVenues() {
               </div>
             ))
           ) : (
-            <p>You have no venues at the moment.</p>
+            <p className="font-petrona font-semibold text-custom-dark uppercase">
+            * You have no venues at the moment *
+            </p>
           )}
         </div>
-        <button
-        className="absolute my-[40px] text-4xl text-custom-deep left-20 lg:left-60 top-2/2 transform -translate-y-2/2 pb-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
+        <>
+  {venues.length > 0 && (
+    <>
+      <button
+        className="absolute mt-[60px] text-4xl text-custom-deep left-20 lg:left-60 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
         onClick={() => scroll('left')}
-        >
-          ❮
-        </button>
-        <button
-        className="absolute my-[40px] text-4xl text-custom-deep right-20 lg:right-60 top-2/2 transform -translate-y-2/2 pb-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
+      >
+        ❮
+      </button>
+      <button
+        className="absolute mt-[60px] text-4xl text-custom-deep right-20 lg:right-60 top-2/2 transform -translate-y-2/2 py-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
         onClick={() => scroll('right')}
-        >
-          ❯
-        </button>
-      </div>
+      >
+        ❯
+      </button>
+    </>
+  )}
+</>
 
+      </div>
       <Modal title="Update Venue" isOpen={isModalOpen} onClose={closeModal}>
         {modalContent}
       </Modal>

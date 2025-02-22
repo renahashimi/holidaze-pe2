@@ -134,7 +134,7 @@ const VenueSearch = ({ venues = [] }) => {
           />
           <button
             onClick={toggleDetails}
-            className={`flex hover:text-custom-deep font-petrona font-semibold text-base py-2 px-3 m-3 hover:bg-custom-light border-2 border-custom-deep rounded ${location === "/" ? "bg-custom-dark text-white border-none" : "bg-whitet text-custom-deep"}`}>
+            className={`flex hover:text-custom-deep font-petrona font-semibold text-base py-2 px-3 m-3 hover:bg-custom-light border-2 border-custom-deep rounded ${location === "/" ? "bg-custom-dark text-white border-none" : "bg-white text-custom-deep"}`}>
           
             FILTER
             <span className="ps-2 mt-1 pb-0 mb-0">
@@ -145,7 +145,7 @@ const VenueSearch = ({ venues = [] }) => {
       </div>
 
       {showDetails && (
-        <div className={`block sm:flex justify-center sm:justify-evenly m-auto text-center my-2 max-w-[700px] ${location === "/" ? "bg-custom-white" : "bg-custom-light py-6"}`}>
+        <div className={`block sm:flex justify-center sm:justify-evenly m-auto text-center my-2 max-w-[700px] ${location === "/" ? "bg-custom-white" : "border-2 border-custom-medium py-4"}`}>
           <div className="block">
             <h2 className="font-petrona font-semibold text-lg text-custom deep uppercase">
               facilities
@@ -154,7 +154,7 @@ const VenueSearch = ({ venues = [] }) => {
               <button
                 key={filter}
                 onClick={() => handleFilterChange(filter)}
-                className={`btn ${filters[filter] ? 'bg-custom-medium border-2 border-custom-light' : 'bg-custom-deep border-2 border-transparent'} p-2 text-center m-2 rounded-full text-white`}
+                className={`btn ${filters[filter] ? 'bg-custom-medium border-2 border-custom-deep' : 'bg-custom-deep border-2 border-transparent'} p-2 text-center m-2 rounded-full text-white`}
               >
                 <span className="flex items-center">
                   {filter === 'wifi' && <FaWifi />}
@@ -172,13 +172,13 @@ const VenueSearch = ({ venues = [] }) => {
             <div className="block text-white text-s font-petrona font-semibold">
               <button
                 onClick={() => handleDateSort('newest')}
-                className={`px-2 py-1 m-2 border-2 uppercase text-sm ${dateSortOption === 'newest' ? 'bg-custom-medium border-2 border-custom-light' : 'bg-custom-deep border-2 border-transparent'} rounded-full`}
+                className={`px-2 py-1 m-2 border-2 uppercase text-sm ${dateSortOption === 'newest' ? 'bg-custom-medium border-2 border-custom-deep' : 'bg-custom-deep border-2 border-transparent'} rounded-full`}
               >
                 New to Old
               </button>
               <button
                 onClick={() => handleDateSort('oldest')}
-                className={`px-2 py-1 m-2 border-2 uppercase text-sm ${dateSortOption === 'oldest' ? 'bg-custom-medium border-2 border-custom-light' : 'bg-custom-deep border-2 border-transparent'} rounded-full`}
+                className={`px-2 py-1 m-2 border-2 uppercase text-sm ${dateSortOption === 'oldest' ? 'bg-custom-medium border-2 border-custom-deep' : 'bg-custom-deep border-2 border-transparent'} rounded-full`}
               >
                 Old to New
               </button>

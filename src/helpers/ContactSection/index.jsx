@@ -20,7 +20,7 @@ const ContactSection = () => {
         </p>
         <p className='font-petrona text-sm lg:text-base font-bold pb-3'> Our team is always happy to assist you.</p> 
 
-        <Link to="/contact" className="font-play md:text-lg hover:underline">
+        <Link to="/contact" className="font-play font-bold md:text-lg underline">
           Contact Us Today!
         </Link>
       </div>

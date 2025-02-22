@@ -4,6 +4,11 @@ import { apiUrl } from '../../../api/constants';
 import { load } from '../../../storage/load';
 import VenueBookingCard from '../../Templates/BookingVenueCard';
 
+/**
+ * Component for displaying user's bookings.
+ * Fetches bookings from the API and allows users to cancel them.
+ * Provides horizontal scrolling functionality for bookings.
+ */
 function MyBookings() {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,6 +24,9 @@ function MyBookings() {
       return;
     }
 
+    /**
+     * Fetches bookings for the authenticated user.
+     */
     const fetchBookings = async () => {
       setLoading(true);
       try {
@@ -49,6 +57,10 @@ function MyBookings() {
     fetchBookings();
   }, [profile?.name, token]);
 
+  /**
+   * Handles the deletion of a booking.
+   * @param {string} bookingId - The ID of the booking to delete.
+   */
   const handleDeleteBooking = async (bookingId) => {
     if (!window.confirm('Are you sure you want to cancel this booking?')) return;
 
@@ -73,6 +85,10 @@ function MyBookings() {
     }
   };
 
+  /**
+   * Scrolls the booking container left or right.
+   * @param {string} direction - The direction to scroll ('left' or 'right').
+   */
   const scroll = (direction) => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollLeft += direction === 'left' ? -240 : 240;
@@ -95,7 +111,7 @@ function MyBookings() {
             className="flex space-x-4 overflow-y-scroll h-full scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-200"
           >
             {bookings.map((booking) => (
-              <div key={booking.id} className="bg-white min-w-[300px]">
+              <div key={booking.id} className="bg-white min-w-[250px]">
                 <VenueBookingCard booking={booking} />
                 <div className="flex justify-center p-3">
                   <button
@@ -110,24 +126,29 @@ function MyBookings() {
           </div>
         </div>
       ) : (
-        <p className="font-petrona font-semibold text-custom-dark uppercase">
-          There are no bookings at the moment.
+        <p className="font-petrona font-semibold text-custom-dark uppercase mb-4">
+          * There are no bookings at the moment *
         </p>
       )}
-      {/* Left Scroll Button */}
-      <button
-        className="absolute mt-[30px] text-4xl text-custom-deep left-20 lg:left-60 top-2/2 transform -translate-y-2/2 pb-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
-        onClick={() => scroll('left')}
-      >
-        ❮
-      </button>
-      {/* Right Scroll Button */}
-      <button
-        className="absolute mt-[30px] text-4xl text-custom-deep right-20 lg:right-60 top-2/2 transform -translate-y-2/2 pb-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
-        onClick={() => scroll('right')}
-      >
-        ❯
-      </button>
+      {bookings.length > 0 && (
+        <>
+          {/* Left Scroll Button */}
+          <button
+            className="absolute mt-[30px] text-4xl text-custom-deep left-20 lg:left-60 top-2/2 transform -translate-y-2/2 pb-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
+            onClick={() => scroll('left')}
+          >
+            ❮
+          </button>
+
+          {/* Right Scroll Button */}
+          <button
+            className="absolute mt-[30px] text-4xl text-custom-deep right-20 lg:right-60 top-2/2 transform -translate-y-2/2 pb-1 px-2 rounded-full shadow-md hover:bg-custom-medium hover:text-white"
+            onClick={() => scroll('right')}
+          >
+            ❯
+          </button>
+        </>
+      )}
     </div>
   );
 }

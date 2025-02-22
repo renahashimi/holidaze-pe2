@@ -35,6 +35,7 @@ function UpdateVenueForm({ venue, onSubmit }) {
 
   /**
    * Update formData when the venue prop changes.
+   * @param {Object} venue - The updated venue data.
    */
   useEffect(() => {
     if (venue) {
@@ -145,6 +146,7 @@ function UpdateVenueForm({ venue, onSubmit }) {
         body: JSON.stringify(updatedRequestData),
       });
 
+      alert('Your venue has been successfully updated!')
       window.location.reload();
       onSubmit(formData);
     } catch (error) {
