@@ -113,7 +113,7 @@ const ProfileDetails = () => {
     setActiveTab(tab);
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div className="text-center text-xl uppercase font-semibold text-custom-deep">Loading...</div>;
   if (error) return <div>{error}</div>;
 
   return (

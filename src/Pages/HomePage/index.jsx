@@ -29,9 +29,9 @@ function HomePage() {
     errorMessage,
   } = useApi(`${apiUrl}/venues?_owner=true&_bookings=true`);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error fetching venues: {errorMessage}</div>;
-  if (!venues || venues.length === 0) return <div>No venues found.</div>;
+  if (isLoading) return <div className="text-center text-xl uppercase font-semibold text-custom-deep">Loading...</div>;
+  if (isError) return <div className="text-center text-xl uppercase font-semibold text-custom-deep">Error fetching venues: {errorMessage}</div>;
+  if (!venues || venues.length === 0) return <div className="text-center text-xl uppercase font-semibold text-custom-deep">No venues found.</div>;
 
   const topVenues = [...venues]
     .sort((a, b) => b.bookings.length - a.bookings.length)

@@ -59,8 +59,8 @@ function BookingPage() {
     }
   }, [dates, venue]);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError || !venue) return <div>Venue not found!</div>;
+  if (isLoading) return <div className="text-center text-xl uppercase font-semibold text-custom-deep">Loading...</div>;
+  if (isError || !venue) return <div className="text-center text-xl uppercase font-semibold text-custom-deep">Venue not found!</div>;
 
   const { name, price, maxGuests, media, bookings, location } = venue;
 

@@ -142,7 +142,7 @@ function MyVenues() {
     }
   };
 
-  if (loading) return <p>Loading venues...</p>;
+  if (loading) return <p className="text-center text-xl uppercase font-semibold text-custom-deep">Loading venues...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (

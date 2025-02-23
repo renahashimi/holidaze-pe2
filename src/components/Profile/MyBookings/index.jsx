@@ -95,7 +95,7 @@ function MyBookings() {
     }
   };
 
-  if (loading) return <p>Loading your bookings...</p>;
+  if (loading) return <p className="text-center text-xl uppercase font-semibold text-custom-deep">Loading your bookings...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (

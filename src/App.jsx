@@ -10,7 +10,13 @@ import Profile from './Pages/Profile';
 import AboutUsPage from './Pages/AboutUs';
 import ContactPage from './Pages/Contact';
 import SingleProfile from './Pages/SingleProfile';
-
+/**
+ * Main application component that defines the routing structure.
+ * Uses React Router to manage different pages and stores the previous 
+ * visited path in local storage.
+ *
+ * @returns {JSX.Element} The application routes wrapped in a layout component.
+ */
 function App() {
   const location = useLocation();
   const previousPath = useRef(null);
@@ -21,6 +27,7 @@ function App() {
     }
     previousPath.current = location.pathname; 
   }, [location.pathname]);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
